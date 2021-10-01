@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,11 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'lab-man-front';
-  /**
-   *
-   */
-  constructor() {
-    const xd = '';
+
+  isUserLogged = false
+  constructor(private router: Router){
   }
+
+  navigateToMainPanel(){
+    this.isUserLogged = true
+    this.router.navigate(['app-main-panel']);
+  }
+
 }

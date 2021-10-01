@@ -1,9 +1,14 @@
-<div>
-  <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
-  <div class="container">
-    <div class="row">
-      <div class="col">col1</div>
-      <div class="col">col2</div>
-    </div>
+<div *ngIf="!isUserLogged">
+
+  <div class="row-12">
+    <div class="col d-flex justify-content-center"><h1>Angular Router App</h1></div>
   </div>
+  <div class="row-12">
+    <div class="col d-flex justify-content-center"><button class="button" type="button" mat-raised-button (click)="navigateToMainPanel()"> Login </button></div>
+  </div>
+  
 </div>
+
+<div *ngIf="isUserLogged">
+  <router-outlet></router-outlet>
+</div>  
