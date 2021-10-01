@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lab-man-front';
-
-  /**
-   *
-   */
-  constructor() {
-    const a = 'ssss';
-  }
 }

@@ -5,15 +5,19 @@ module.exports = {
   },
   'extends': [
     'google',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
     'ecmaVersion': 12,
+    'ecmaFeatures': {
+      'jsx': true,
+      'modules': true
+    }
   },
   'plugins': [
     '@typescript-eslint',
-    'prettier'
+    'prettier',
   ],
   'rules': {
     "require-jsdoc": "off",
