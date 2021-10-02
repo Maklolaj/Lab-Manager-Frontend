@@ -26,10 +26,10 @@
 
       <div class="options">
         <div class="reservations d-flex justify-content-center">
-            <button mat-raised-button >Twoje Rezerwacje</button>
+            <button mat-raised-button (click)="showReservations()">Twoje Rezerwacje</button>
         </div>
         <div class="reserve d-flex justify-content-center">
-            <button mat-raised-button >Zarezerwuj</button>
+            <button mat-raised-button (click)="makeReservation()" >Zarezerwuj</button>
         </div>
     </div>
       
@@ -38,8 +38,24 @@
     <!-- Header -->
     <mat-sidenav-content class="sidenav-content"> 
       
-      
-      <div><p>TEST TEST EST</p></div>
+      <ng-container [ngSwitch]="userCase">
+
+        <div *ngSwitchCase="'reservations'">
+          <app-reservations></app-reservations>
+        </div>
+        
+
+        <div *ngSwitchCase="'makeReservation'">
+          <app-reservation-stepper></app-reservation-stepper>
+        </div>
+
+        <div *ngSwitchDefault>
+          <p>TEST CASE</p>
+        </div>
+
+        
+      </ng-container> 
+
        <!-- TU IDĄ komponenty -->
 
     </mat-sidenav-content>
