@@ -1,58 +1,52 @@
 <mat-stepper #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Wybierz przedmiot</ng-template>
+    <mat-list>
+      <mat-list-item> Pepper </mat-list-item>
+      <mat-list-item> Salt </mat-list-item>
+      <mat-list-item> Paprika </mat-list-item>
+    </mat-list>
 
-    <mat-step >
-        <ng-template matStepLabel>Wybierz przedmiot</ng-template>
-            <mat-list>
-                <mat-list-item> Pepper </mat-list-item>
-                <mat-list-item> Salt </mat-list-item>
-                <mat-list-item> Paprika </mat-list-item>
-           </mat-list>
+    <div>
+      <p>Go to a different step to see the error state</p>
+      <button mat-button matStepperNext>Dalej</button>
+    </div>
+  </mat-step>
 
-           <div>
-            <p>Go to a different step to see the error state</p>
-            <button mat-button matStepperNext>Dalej</button>
-        </div>
+  <mat-step>
+    <ng-template matStepLabel>Wybierz Datę</ng-template>
+    <mat-form-field appearance="fill">
+      <mat-label>Data</mat-label>
+      <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
+    </mat-form-field>
+    <button mat-button matStepperPrevious>Cofnij</button>
+    <button mat-button matStepperNext>Dalej</button>
+  </mat-step>
 
-    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Wybierz Czas</ng-template>
+    <mat-form-field appearance="fill">
+      <mat-label>Czas</mat-label>
+      <input
+        matInput
+        placeholder="Ex. 1 Main St, New York, NY"
+        formControlName="secondCtrl"
+        required
+      />
+    </mat-form-field>
+    <div>
+      <button mat-button matStepperPrevious>Cofnij</button>
+      <button mat-button matStepperNext>Dalej</button>
+    </div>
+  </mat-step>
 
-    <mat-step >
-      
-        <ng-template matStepLabel>Wybierz Datę</ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Data</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" 
-                 required>
-        </mat-form-field>
-        <button mat-button matStepperPrevious>Cofnij</button>
-        <button mat-button matStepperNext>Dalej</button> 
-      
-    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Gotowe</ng-template>
 
-    <mat-step>
-      
-
-          <ng-template matStepLabel>Wybierz Czas</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Czas</mat-label>
-            <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                   required>
-          </mat-form-field>
-          <div>
-            
-           <button mat-button matStepperPrevious>Cofnij</button>
-            <button mat-button matStepperNext>Dalej</button> 
-
-          </div>
-        
-      </mat-step>
-
-    <mat-step>
-      <ng-template matStepLabel>Gotowe</ng-template>
-
-      <p>Skończone.</p>
-      <div>
-        <button mat-button matStepperPrevious>Cofnij</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-stepper>
+    <p>Skończone.</p>
+    <div>
+      <button mat-button matStepperPrevious>Cofnij</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

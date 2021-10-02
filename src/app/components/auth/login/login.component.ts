@@ -3,18 +3,15 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   sendNotification() {
-      this.notifyParent.emit();
+    this.notifyParent.emit();
   }
-
 }

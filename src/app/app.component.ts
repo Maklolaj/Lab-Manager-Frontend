@@ -7,14 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  isUserLogged = false;
+  constructor(private router: Router) {}
 
-  isUserLogged = false
-  constructor(private router: Router){
-  }
-
-  navigateToMainPanel(){
-    this.isUserLogged = true
+  navigateToMainPanel() {
+    this.isUserLogged = true;
     this.router.navigate(['app-main-panel']);
   }
-
 }

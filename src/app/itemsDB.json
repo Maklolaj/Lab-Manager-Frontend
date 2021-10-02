@@ -1,0 +1,20 @@
+[
+  {
+    "id": 2,
+    "name": "nozyce",
+    "describiton": "badzo ostre",
+    "isDamaged": false
+  },
+  {
+    "id": 3,
+    "name": "widelec",
+    "describiton": "srebrny klasyczny styl",
+    "isDamaged": false
+  },
+  {
+    "id": 4,
+    "name": "młotek",
+    "describiton": "duży i ciężki",
+    "isDamaged": true
+  }
+]

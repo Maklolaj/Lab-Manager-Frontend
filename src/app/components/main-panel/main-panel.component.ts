@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import data from '../../itemsDB.json';
 
 @Component({
   selector: 'app-main-panel',
   templateUrl: './main-panel.component.html',
-  styleUrls: ['./main-panel.component.scss']
+  styleUrls: ['./main-panel.component.scss'],
 })
 export class MainPanelComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  userCase:string = '';
+  userCase: string = '';
 
   ngOnInit(): void {
+    const word = <any>data[0];
+    console.log(word);
   }
 
-  showReservations(){
-    this.userCase = 'reservations'
+  showReservations(): void{
+    this.userCase = 'reservations';
   }
 
-  makeReservation(){
-    this.userCase = 'makeReservation'
+  makeReservation(): void {
+    this.userCase = 'makeReservation';
   }
-
-  
-
 }

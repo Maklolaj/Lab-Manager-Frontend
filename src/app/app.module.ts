@@ -11,7 +11,13 @@ import { ReservationsComponent } from './components/main-panel/reservations/rese
 import { ReservationStepperComponent } from './components/main-panel/reservation-stepper/reservation-stepper.component';
 
 @NgModule({
-  declarations: [AppComponent, MainPanelComponent,LoginComponent, ReservationsComponent, ReservationStepperComponent],
+  declarations: [
+    AppComponent,
+    MainPanelComponent,
+    LoginComponent,
+    ReservationsComponent,
+    ReservationStepperComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
