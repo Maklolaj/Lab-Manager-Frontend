@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class MainPanelComponent implements OnInit {
 
   constructor() { }
-
+  events: string[] = [];
+  opened = false;
   ngOnInit(): void {
+  }
+  isOpenSideNav = false;
+
+  toggleSideNav(){
+    this.isOpenSideNav = !this.isOpenSideNav
   }
 
 }
