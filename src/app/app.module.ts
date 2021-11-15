@@ -9,6 +9,8 @@ import { MainPanelComponent } from './components/main-panel/main-panel.component
 import { LoginComponent } from './components/auth/login/login.component';
 import { ReservationsComponent } from './components/main-panel/reservations/reservations.component';
 import { ReservationStepperComponent } from './components/main-panel/reservation-stepper/reservation-stepper.component';
+import { StoreModule } from '@ngrx/store';
+import { simpleReducer } from './store/simpleReducer'
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ReservationStepperComponent } from './components/main-panel/reservation
     NgbModule,
     BrowserAnimationsModule,
     MaterialModule,
+    StoreModule.forRoot({message: simpleReducer})
   ],
   providers: [],
   bootstrap: [AppComponent],
