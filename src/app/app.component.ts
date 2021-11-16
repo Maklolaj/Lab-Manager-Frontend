@@ -1,5 +1,8 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+import { IMainPageState, slectLoginStatus } from './store/simpleReducer';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +10,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isUserLogged = false;
-  constructor(private router: Router) {}
 
-  navigateToMainPanel() {
-    this.isUserLogged = true;
-    this.router.navigate(['app-main-panel']);
-  }
+  isUserLogged:IMainPageState ={
+    isSigningIn: false
+  };
+  
+  constructor(
+      private router: Router,
+      private store:Store<any>,
+    ) {
+      
+      this.store.select(slectLoginStatus).subscribe((x:any)=>{
+        console.log(x)
+        this.isUserLogged.isSigningIn = x['isSigningIn']
+        console.log(this.isUserLogged.isSigningIn)
+      })
+ 
+    }
+
+
 }

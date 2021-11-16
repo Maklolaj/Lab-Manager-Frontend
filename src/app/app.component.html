@@ -1,13 +1,13 @@
 
 <div>
-  <div *ngIf="!isUserLogged">
+  <div *ngIf="!this.isUserLogged.isSigningIn">
 
-    <app-login (notifyParent)="navigateToMainPanel()"> </app-login> 
+    <app-login > </app-login> 
   
     
   </div>
   
-  <div *ngIf="isUserLogged">
+  <div *ngIf="this.isUserLogged.isSigningIn">
     <router-outlet></router-outlet>
   </div>  
 </div>

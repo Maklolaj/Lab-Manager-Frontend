@@ -10,7 +10,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { ReservationsComponent } from './components/main-panel/reservations/reservations.component';
 import { ReservationStepperComponent } from './components/main-panel/reservation-stepper/reservation-stepper.component';
 import { StoreModule } from '@ngrx/store';
-import { simpleReducer } from './store/simpleReducer'
+import { loginReducer} from './store/simpleReducer'
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { simpleReducer } from './store/simpleReducer'
     NgbModule,
     BrowserAnimationsModule,
     MaterialModule,
-    StoreModule.forRoot({message: simpleReducer})
+    StoreModule.forRoot({isLoggedIn:loginReducer})
   ],
   providers: [],
   bootstrap: [AppComponent],

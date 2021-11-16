@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { siginIn } from 'src/app/store/simpleReducer';
 
 @Component({
   selector: 'app-login',
@@ -6,12 +8,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  constructor( private store:Store<any>) {}
 
   ngOnInit(): void {}
 
-  @Output() notifyParent: EventEmitter<any> = new EventEmitter();
-  sendNotification() {
-    this.notifyParent.emit();
+
+
+  signIn(){
+    this.store.dispatch(siginIn())
   }
 }

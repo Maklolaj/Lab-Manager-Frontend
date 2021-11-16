@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import data from '../../itemsDB.json';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { siginIn, siginOut, slectLoginStatus } from 'src/app/store/simpleReducer';
 
 interface AppState {
   message:string;
@@ -17,7 +18,7 @@ export class MainPanelComponent implements OnInit {
   constructor(
     private store:Store<AppState>
   ) {
-    this.message = this.store.select('message')
+
   }
 
   userCase: string = '';
@@ -29,19 +30,20 @@ export class MainPanelComponent implements OnInit {
 
   showReservations(): void{
     this.userCase = 'reservations';
-    this.spanishMode()
 
   }
 
-  spanishMode(){
-    this.store.dispatch({type:'SPANISH'})
-  }
-  frenchMode(){
-    this.store.dispatch({type:'FRENCH'})
-  }
+  test2(){
+    this.store.dispatch(siginIn())
+    //this.store.select(slectLoginStatus).subscribe((x)=>(console.log(x)))
+   }
+   test3(){
+    this.store.dispatch(siginOut())
+    //this.store.select(slectLoginStatus).subscribe((x)=>(console.log(x)))
+   }
+
 
   makeReservation(): void {
     this.userCase = 'makeReservation';
-    this.frenchMode()
   }
 }
