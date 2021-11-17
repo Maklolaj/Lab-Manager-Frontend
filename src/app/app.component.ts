@@ -21,9 +21,7 @@ export class AppComponent {
     ) {
       
       this.store.select(slectLoginStatus).subscribe((x:any)=>{
-        console.log(x)
         this.isUserLogged.isSigningIn = x['isSigningIn']
-        console.log(this.isUserLogged.isSigningIn)
       })
  
     }

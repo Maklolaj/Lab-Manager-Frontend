@@ -3,6 +3,7 @@ import data from '../../itemsDB.json';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { siginIn, siginOut, slectLoginStatus } from 'src/app/store/simpleReducer';
+import { Router } from '@angular/router';
 
 interface AppState {
   message:string;
@@ -16,7 +17,8 @@ interface AppState {
 export class MainPanelComponent implements OnInit {
   message?: Observable<string>
   constructor(
-    private store:Store<AppState>
+    private store:Store<AppState>,
+    private router: Router,
   ) {
 
   }
@@ -33,12 +35,10 @@ export class MainPanelComponent implements OnInit {
 
   }
 
-  test2(){
-    this.store.dispatch(siginIn())
-    //this.store.select(slectLoginStatus).subscribe((x)=>(console.log(x)))
-   }
-   test3(){
+  
+   logout(){
     this.store.dispatch(siginOut())
+    this.router.navigate([''])
     //this.store.select(slectLoginStatus).subscribe((x)=>(console.log(x)))
    }
 
