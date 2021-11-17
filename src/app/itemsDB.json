@@ -1,20 +1,26 @@
 [
   {
     "id": 2,
-    "name": "nozyce",
-    "describiton": "badzo ostre",
+    "name": "Nożyce",
+    "describiton": "Do cięcia drutu",
     "isDamaged": false
   },
   {
     "id": 3,
-    "name": "widelec",
-    "describiton": "srebrny klasyczny styl",
+    "name": "Widelec",
+    "describiton": "Srebrny klasyczny styl",
     "isDamaged": false
   },
   {
     "id": 4,
-    "name": "młotek",
-    "describiton": "duży i ciężki",
+    "name": "Młotek",
+    "describiton": "Duży i ciężki",
+    "isDamaged": true
+  },
+  {
+    "id": 4,
+    "name": "Piła",
+    "describiton": "Do cięcia metalu",
     "isDamaged": true
   }
 ]

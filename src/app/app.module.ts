@@ -7,10 +7,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservationsComponent } from './components/main-panel/reservations/reservations.component';
 import { ReservationStepperComponent } from './components/main-panel/reservation-stepper/reservation-stepper.component';
 import { StoreModule } from '@ngrx/store';
-import { loginReducer} from './store/simpleReducer'
+import { loginReducer } from './store/simpleReducer';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { loginReducer} from './store/simpleReducer'
     NgbModule,
     BrowserAnimationsModule,
     MaterialModule,
-    StoreModule.forRoot({isLoggedIn:loginReducer})
+    FormsModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot({ isLoggedIn: loginReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

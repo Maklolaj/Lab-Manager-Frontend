@@ -1,65 +1,55 @@
+<mat-toolbar class="main-panel-header" color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
 
-  <mat-toolbar class="main-panel-header" color="primary">
+  <button mat-icon-button>
+    <mat-icon>favorite</mat-icon>
+  </button>
 
-    <button mat-icon-button (click)="sidenav.toggle()" >
-      <mat-icon>menu</mat-icon>
-      
-    </button>
-    <span>My App</span>
+  <button mat-icon-button>
+    <mat-icon>share</mat-icon>
+  </button>
 
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
+  <span class="example-spacer"></span>
 
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
-    </button>
+  <button class="logout-btn" mat-icon-button (click)="logout()">Wyloguj</button>
+</mat-toolbar>
 
-    <span class="example-spacer"></span>
-
-    <button class="logout-btn" mat-icon-button (click)="logout()">Wyloguj</button>
-
-  </mat-toolbar>
-
-  <mat-sidenav-container >
-
-    <!-- SideNav -->
-    <mat-sidenav class="sidenav" #sidenav mode="side">
-
-      <div class="options">
-        <div class="reservations d-flex justify-content-center">
-            <button mat-raised-button (click)="showReservations()">Twoje Rezerwacje</button>
-        </div>
-        <div class="reserve d-flex justify-content-center">
-            <button mat-raised-button (click)="makeReservation()" >Zarezerwuj</button>
-        </div>
+<mat-sidenav-container>
+  <!-- SideNav -->
+  <mat-sidenav class="sidenav" #sidenav mode="side">
+    <div class="options">
+      <div class="reservations d-flex justify-content-center">
+        <button mat-raised-button (click)="showReservations()">
+          Twoje Rezerwacje
+        </button>
+      </div>
+      <div class="reserve d-flex justify-content-center">
+        <button mat-raised-button (click)="makeReservation()">
+          Zarezerwuj
+        </button>
+      </div>
     </div>
-      
-    </mat-sidenav>
-   
-    <!-- Header -->
-    <mat-sidenav-content class="sidenav-content"> 
-      
-      <ng-container [ngSwitch]="userCase">
+  </mat-sidenav>
 
-        <div *ngSwitchCase="'reservations'">
-          <app-reservations></app-reservations>
-        </div>
-        
+  <!-- Header -->
+  <mat-sidenav-content class="sidenav-content">
+    <ng-container [ngSwitch]="userCase">
+      <div *ngSwitchCase="'reservations'">
+        <app-reservations></app-reservations>
+      </div>
 
-        <div *ngSwitchCase="'makeReservation'">
-          <app-reservation-stepper></app-reservation-stepper>
-        </div>
+      <div *ngSwitchCase="'makeReservation'">
+        <app-reservation-stepper></app-reservation-stepper>
+      </div>
 
-        <div *ngSwitchDefault>
-          <p>TEST CASE</p>
-        </div>
+      <div *ngSwitchDefault>
+        <p>TEST CASE</p>
+      </div>
+    </ng-container>
 
-        
-      </ng-container> 
-
-       <!-- TU IDĄ komponenty -->
-
-    </mat-sidenav-content>
-
-  </mat-sidenav-container>
+    <!-- TU IDĄ komponenty -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

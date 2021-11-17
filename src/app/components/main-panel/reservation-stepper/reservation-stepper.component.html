@@ -1,38 +1,47 @@
 <mat-stepper #stepper>
+  <!--STEP 1-->
   <mat-step>
     <ng-template matStepLabel>Wybierz przedmiot</ng-template>
-    <mat-list>
-      <mat-list-item> Pepper </mat-list-item>
-      <mat-list-item> Salt </mat-list-item>
-      <mat-list-item> Paprika </mat-list-item>
-    </mat-list>
+
+    <mat-radio-group [(ngModel)]="itemValue" class="items-radio-group">
+      <mat-radio-button
+        class="item-radio-button"
+        *ngFor="let item of itemList; let i = index"
+        [value]="item.name"
+        >{{ i }}. {{ item.name }}
+      </mat-radio-button>
+    </mat-radio-group>
 
     <div>
-      <p>Go to a different step to see the error state</p>
+      <button (click)="test()">TEST</button>
+      <button mat-button (click)="goNext()">Dalej</button>
+    </div>
+  </mat-step>
+
+  <!--STEP 2-->
+  <mat-step>
+    <ng-template matStepLabel>Wybierz Datę</ng-template>
+
+    <mat-form-field class="date-field" appearance="fill">
+      <mat-label>Wybierz dzień</mat-label>
+      <input [formControl]="dateFormCtrl" matInput [matDatepicker]="picker" />
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button (click)="picker.open()">Open</button>
+
+    <button (click)="test()">TEST</button>
+    <div>
+      <button mat-button matStepperPrevious>Cofnij</button>
       <button mat-button matStepperNext>Dalej</button>
     </div>
   </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel>Wybierz Datę</ng-template>
-    <mat-form-field appearance="fill">
-      <mat-label>Data</mat-label>
-      <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
-    </mat-form-field>
-    <button mat-button matStepperPrevious>Cofnij</button>
-    <button mat-button matStepperNext>Dalej</button>
-  </mat-step>
-
+  <!--STEP 3-->
   <mat-step>
     <ng-template matStepLabel>Wybierz Czas</ng-template>
     <mat-form-field appearance="fill">
       <mat-label>Czas</mat-label>
-      <input
-        matInput
-        placeholder="Ex. 1 Main St, New York, NY"
-        formControlName="secondCtrl"
-        required
-      />
+      <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
     </mat-form-field>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
@@ -40,6 +49,7 @@
     </div>
   </mat-step>
 
+  <!--STEP 4-->
   <mat-step>
     <ng-template matStepLabel>Gotowe</ng-template>
 

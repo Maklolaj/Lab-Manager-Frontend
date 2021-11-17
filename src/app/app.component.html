@@ -1,13 +1,9 @@
-
 <div>
   <div *ngIf="!this.isUserLogged.isSigningIn">
-
-    <app-login > </app-login> 
-  
-    
+    <app-login> </app-login>
   </div>
-  
+
   <div *ngIf="this.isUserLogged.isSigningIn">
     <router-outlet></router-outlet>
-  </div>  
+  </div>
 </div>
