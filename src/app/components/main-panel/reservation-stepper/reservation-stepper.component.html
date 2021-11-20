@@ -39,10 +39,11 @@
   <!--STEP 3-->
   <mat-step>
     <ng-template matStepLabel>Wybierz Czas</ng-template>
-    <mat-form-field appearance="fill">
+    <!-- <mat-form-field appearance="fill">
       <mat-label>Czas</mat-label>
       <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
-    </mat-form-field>
+    </mat-form-field> -->
+  <app-time-grid></app-time-grid>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
       <button mat-button matStepperNext>Dalej</button>
