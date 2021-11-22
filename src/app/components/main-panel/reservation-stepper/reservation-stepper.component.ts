@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
-import data from '../../../itemsDB.json';
+
+import { ItemService } from 'src/app/services/item.service';
+import { IItemModel } from 'src/app/models/IItemModel';
+import { IReservationModel } from 'src/app/models/IReservationModel';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-reservation-stepper',
@@ -9,20 +13,35 @@ import data from '../../../itemsDB.json';
   styleUrls: ['./reservation-stepper.component.scss'],
 })
 export class ReservationStepperComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private itemService: ItemService,
+    private reservationService: ReservationService
+  ) {}
 
   @ViewChild('stepper', { static: false })
   stepper!: MatStepper;
-
-  itemList: any[] = [];
 
   itemValue: string = '';
 
   dateFormCtrl = new FormControl(new Date());
 
+  itemList: IItemModel[] = [];
+  reservationList: IReservationModel[] = [];
+
   ngOnInit(): void {
-    this.itemList = data;
-    console.log(this.itemList[0]);
+    //console.log(this.itemList[0]);
+    this.itemService.getAllItems().subscribe((x) => {
+      this.itemList = x;
+      console.log(this.itemList);
+    });
+    this.reservationService.getAllReservations().subscribe((y) => {
+      this.reservationList = y;
+      console.log(this.reservationList);
+    });
+
+    // for (const item of this.testList) {
+    //   console.log(item.name);
+    // }
   }
 
   test() {

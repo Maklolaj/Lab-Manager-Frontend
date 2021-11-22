@@ -13,6 +13,7 @@ import { ReservationStepperComponent } from './components/main-panel/reservation
 import { StoreModule } from '@ngrx/store';
 import { loginReducer } from './store/simpleReducer';
 import { TimeGridComponent } from './components/main-panel/reservation-stepper/time-grid/time-grid.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TimeGridComponent } from './components/main-panel/reservation-stepper/t
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ isLoggedIn: loginReducer }),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
