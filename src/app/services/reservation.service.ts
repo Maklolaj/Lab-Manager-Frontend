@@ -20,12 +20,17 @@ export class ReservationService {
     return this.httpClient.get<IReservationModel[]>(url);
   }
 
-  getReservationsFromDate(startDate: string, endDate: string): any {
+  getReservationsFromDate(
+    startDate: string,
+    endDate: string
+  ): Observable<IReservationFromDateModel[]> {
     const url: string = `${this.baseUrl}/reservations/from/date/`;
     const headers = { 'content-type': 'application/json' };
 
     let body = JSON.stringify({ startDate: startDate, endDate: endDate });
 
-    return this.httpClient.post<any>(url, body, { headers: headers });
+    return this.httpClient.post<IReservationFromDateModel[]>(url, body, {
+      headers: headers,
+    });
   }
 }

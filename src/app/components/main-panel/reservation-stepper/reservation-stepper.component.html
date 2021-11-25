@@ -32,7 +32,7 @@
     <button (click)="test()">TEST</button>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
-      <button mat-button matStepperNext>Dalej</button>
+      <button mat-button matStepperNext (click)="this.getReservationsOnThatDay()">Dalej</button>
     </div>
   </mat-step>
 

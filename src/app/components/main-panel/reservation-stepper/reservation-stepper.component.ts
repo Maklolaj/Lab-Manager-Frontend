@@ -6,6 +6,7 @@ import { ItemService } from 'src/app/services/item.service';
 import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
 
 @Component({
   selector: 'app-reservation-stepper',
@@ -26,22 +27,13 @@ export class ReservationStepperComponent implements OnInit {
   dateFormCtrl = new FormControl(new Date());
 
   itemList: IItemModel[] = [];
-  reservationList: IReservationModel[] = [];
+  reservationList: IReservationFromDateModel[] = [];
 
   ngOnInit(): void {
-    //console.log(this.itemList[0]);
     this.itemService.getAllItems().subscribe((x) => {
       this.itemList = x;
       console.log(this.itemList);
     });
-    this.reservationService.getAllReservations().subscribe((y) => {
-      this.reservationList = y;
-      console.log(this.reservationList);
-    });
-
-    // for (const item of this.testList) {
-    //   console.log(item.name);
-    // }
   }
 
   test() {
@@ -52,6 +44,19 @@ export class ReservationStepperComponent implements OnInit {
 
   goNext() {
     if (this.itemValue) this.stepper.next();
+  }
+
+  getReservationsOnThatDay() {
+    const start = convert(this.dateFormCtrl.value) + ' 07:00';
+    const end = convert(this.dateFormCtrl.value) + ' 23:00';
+    console.log(start);
+    console.log(end);
+    this.reservationService
+      .getReservationsFromDate(start, end)
+      .subscribe((result: any) => {
+        console.log(result);
+        this.reservationList = result;
+      });
   }
 }
 
