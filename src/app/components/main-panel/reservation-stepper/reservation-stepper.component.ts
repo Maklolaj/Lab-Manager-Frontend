@@ -56,6 +56,8 @@ export class ReservationStepperComponent implements OnInit {
       .subscribe((result: any) => {
         console.log(result);
         this.reservationList = result;
+
+        this.reservationList[0].day;
       });
   }
 }

@@ -32,7 +32,13 @@
     <button (click)="test()">TEST</button>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
-      <button mat-button matStepperNext (click)="this.getReservationsOnThatDay()">Dalej</button>
+      <button
+        mat-button
+        matStepperNext
+        (click)="this.getReservationsOnThatDay()"
+      >
+        Dalej
+      </button>
     </div>
   </mat-step>
 
@@ -43,7 +49,7 @@
       <mat-label>Czas</mat-label>
       <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
     </mat-form-field> -->
-  <app-time-grid></app-time-grid>
+    <app-time-grid [reservationList]="this.reservationList"></app-time-grid>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
       <button mat-button matStepperNext>Dalej</button>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IItemModel } from 'src/app/models/IItemModel';
+import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
 
 @Component({
   selector: 'app-time-grid',
@@ -7,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimeGridComponent implements OnInit {
   constructor() {}
+
+  @Input()
+  reservationList: IReservationFromDateModel[] = [];
 
   ngOnInit(): void {
     let persons: { [id: string]: IReservation } = {};
