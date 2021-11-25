@@ -4,7 +4,7 @@ import { MatStepper } from '@angular/material/stepper';
 
 import { ItemService } from 'src/app/services/item.service';
 import { IItemModel } from 'src/app/models/IItemModel';
-import { IReservationModel } from 'src/app/models/IReservationModel';
+import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
 import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({

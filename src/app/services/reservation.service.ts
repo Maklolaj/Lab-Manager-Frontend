@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { IReservationModel } from '../models/IReservationModel';
+import { IReservationFromDateModel } from '../models/ReservationModels/IReservationFromDateModel';
+import { IReservationModel } from '../models/ReservationModels/IReservationModel';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +18,14 @@ export class ReservationService {
     const url: string = `${this.baseUrl}/reservations/`;
 
     return this.httpClient.get<IReservationModel[]>(url);
+  }
+
+  getReservationsFromDate(startDate: string, endDate: string): any {
+    const url: string = `${this.baseUrl}/reservations/from/date/`;
+    const headers = { 'content-type': 'application/json' };
+
+    let body = JSON.stringify({ startDate: startDate, endDate: endDate });
+
+    return this.httpClient.post<any>(url, body, { headers: headers });
   }
 }
