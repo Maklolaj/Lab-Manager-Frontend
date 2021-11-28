@@ -1,3 +1,27 @@
-<p>reservation-summary works!</p>
-<span>{{ userReservation.startDate }}</span>
-<span>{{ userReservation.endDate }}</span>
+<div class="reservation-summary-wrapper">
+  <mat-card class="reservation-summary-card">
+    <mat-card-title>Szczegóły rezerwacji</mat-card-title>
+    <mat-card-content>
+      <p>
+        Nazwa przedmiotu:
+        <b>{{ this.getItemName(this.userReservation.item) }}</b>
+      </p>
+      <p>
+        Początek rezerwacji:
+        <b>{{ formatSummaryDate(this.userReservation.startDate) }}</b>
+      </p>
+      <p>
+        Koniec rezerwacji:
+        <b>{{ formatSummaryDate(this.userReservation.endDate) }}</b>
+      </p>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button mat-button>Potwierdź Rezerwację</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <mat-progress-bar mode="query"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

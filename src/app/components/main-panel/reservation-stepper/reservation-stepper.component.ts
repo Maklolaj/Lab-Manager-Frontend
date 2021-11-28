@@ -36,8 +36,8 @@ export class ReservationStepperComponent implements OnInit {
     id: 0,
     item: 0,
     user: '',
-    startDate: null,
-    endDate: null,
+    startDate: new Date(),
+    endDate: new Date(),
   };
 
   dateFormCtrl = new FormControl(new Date());
@@ -71,6 +71,7 @@ export class ReservationStepperComponent implements OnInit {
   getTimesFromTimeGrid(times: IReservationModel): void {
     this.userReservation.startDate = times.startDate;
     this.userReservation.endDate = times.endDate;
+    this.userReservation.item = this.itemValue.id;
   }
 }
 

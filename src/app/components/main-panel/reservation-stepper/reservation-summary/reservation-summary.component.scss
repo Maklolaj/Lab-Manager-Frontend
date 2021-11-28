@@ -1,0 +1,9 @@
+.reservation-summary-wrapper {
+  display: flex;
+  justify-content: center;
+
+  .reservation-summary-card {
+    max-width: 50%;
+    min-width: 50%;
+  }
+}
