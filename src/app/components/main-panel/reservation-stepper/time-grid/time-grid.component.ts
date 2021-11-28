@@ -1,3 +1,4 @@
+import { Time } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
@@ -14,14 +15,52 @@ export class TimeGridComponent implements OnInit {
   @Input()
   reservationList: IReservationFromDateModel[] = [];
 
-  selectedDate: IReservationModel | undefined;
+  selectedResStartTime: Date = new Date();
+  selectedResEndTime: Date = new Date();
 
   ngOnInit(): void {
     console.log(this.reservationList);
   }
 
-  getReservationTime(model: IReservationModel): void {
-    this.selectedDate = model;
-    console.log(this.selectedDate);
+  getReservationTime(day: number, hour: number): void {
+    let selectedDay = this.reservationList[day].day;
+    let selectedStartTime;
+    let selectedEndTime;
+    switch (hour) {
+      case 0:
+        selectedStartTime = '8:00';
+        selectedEndTime = '10:00';
+        break;
+      case 1:
+        selectedStartTime = '10:00';
+        selectedEndTime = '12:00';
+        break;
+      case 2:
+        selectedStartTime = '12:00';
+        selectedEndTime = '14:00';
+        break;
+      case 3:
+        selectedStartTime = '14:00';
+        selectedEndTime = '16:00';
+        break;
+      case 4:
+        selectedStartTime = '16:00';
+        selectedEndTime = '18:00';
+        break;
+      case 5:
+        selectedStartTime = '18:00';
+        selectedEndTime = '20:00';
+        break;
+      default:
+        break;
+    }
+    this.selectedResStartTime = new Date(`${selectedDay} ${selectedStartTime}`);
+    this.selectedResEndTime = new Date(`${selectedDay} ${selectedEndTime}`);
+    console.log(this.selectedResStartTime);
+    console.log(this.selectedResEndTime);
+  }
+
+  isCellActive(day: number, hour: number): boolean {
+    return this.reservationList[day].reservations[hour].id == 0;
   }
 }

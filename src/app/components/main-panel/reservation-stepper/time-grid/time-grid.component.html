@@ -8,86 +8,125 @@
     </tr>
   </thead>
   <tbody>
+    <!--8:00-10:00 -->
     <tr>
       <th>8:00-10:00</th>
       <td class="reservation-button-cell">
         <button
-          (click)="getReservationTime(this.reservationList[0].reservations[0])"
+          (click)="getReservationTime(0, 0)"
           class="btn"
-          [disabled]="this.reservationList[0].reservations[0].id != 0"
+          [disabled]="!isCellActive(0, 0)"
           [ngClass]="{
-            'btn-primary': this.reservationList[0].reservations[0].id == 0,
-            'btn-danger': this.reservationList[0].reservations[0].id != 0
+            'btn-success': isCellActive(0, 0),
+            'btn-danger': !isCellActive(0, 0)
           }"
         >
-          <span *ngIf="this.reservationList[0].reservations[0].id == 0"
-            >Rezerwuj</span
-          >
-          <span *ngIf="this.reservationList[0].reservations[0].id != 0"
-            >Niedostępne</span
-          >
+          <span *ngIf="isCellActive(0, 0)">Rezerwuj</span>
+          <span *ngIf="!isCellActive(0, 0)">Niedostępne</span>
         </button>
       </td>
       <td class="reservation-button-cell">
         <button
+          (click)="getReservationTime(1, 0)"
           class="btn"
-          [disabled]="this.reservationList[1].reservations[0].id != 0"
+          [disabled]="!isCellActive(1, 0)"
           [ngClass]="{
-            'btn-primary': this.reservationList[1].reservations[0].id == 0,
-            'btn-danger': this.reservationList[1].reservations[0].id != 0
+            'btn-success': isCellActive(1, 0),
+            'btn-danger': !isCellActive(1, 0)
           }"
         >
-          <span *ngIf="this.reservationList[1].reservations[0].id == 0"
-            >Rezerwuj</span
-          >
-          <span *ngIf="this.reservationList[1].reservations[0].id != 0"
-            >Niedostępne</span
-          >
+          <span *ngIf="isCellActive(1, 0)">Rezerwuj</span>
+          <span *ngIf="!isCellActive(1, 0)">Niedostępne</span>
         </button>
       </td>
       <td class="reservation-button-cell">
         <button
+          (click)="getReservationTime(2, 0)"
           class="btn"
-          [disabled]="this.reservationList[2].reservations[0].id != 0"
+          [disabled]="!isCellActive(2, 0)"
           [ngClass]="{
-            'btn-primary': this.reservationList[2].reservations[0].id == 0,
-            'btn-danger': this.reservationList[2].reservations[0].id != 0
+            'btn-success': isCellActive(2, 0),
+            'btn-danger': !isCellActive(2, 0)
           }"
         >
-          <span *ngIf="this.reservationList[2].reservations[0].id == 0"
-            >Rezerwuj</span
-          >
-          <span *ngIf="this.reservationList[2].reservations[0].id != 0"
-            >Niedostępne</span
-          >
+          <span *ngIf="isCellActive(2, 0)">Rezerwuj</span>
+          <span *ngIf="!isCellActive(2, 0)">Niedostępne</span>
         </button>
       </td>
     </tr>
 
+    <!--10:00-12:00 -->
     <tr>
       <th>10:00-12:00</th>
-      <td>Rezerwuj</td>
-      <td>Niedostępne</td>
-      <td>Rezerwuj</td>
+      <td class="reservation-button-cell">
+        <button
+          (click)="getReservationTime(0, 1)"
+          class="btn"
+          [disabled]="!isCellActive(0, 1)"
+          [ngClass]="{
+            'btn-success': isCellActive(0, 1),
+            'btn-danger': !isCellActive(0, 1)
+          }"
+        >
+          <span *ngIf="isCellActive(0, 1)">Rezerwuj</span>
+          <span *ngIf="!isCellActive(0, 1)">Niedostępne</span>
+        </button>
+      </td>
+      <td class="reservation-button-cell">
+        <button
+          (click)="getReservationTime(1, 1)"
+          class="btn"
+          [disabled]="!isCellActive(1, 1)"
+          [ngClass]="{
+            'btn-success': isCellActive(1, 1),
+            'btn-danger': !isCellActive(1, 1)
+          }"
+        >
+          <span *ngIf="isCellActive(1, 1)">Rezerwuj</span>
+          <span *ngIf="!isCellActive(1, 1)">Niedostępne</span>
+        </button>
+      </td>
+      <td class="reservation-button-cell">
+        <button
+          (click)="getReservationTime(2, 1)"
+          class="btn"
+          [disabled]="!isCellActive(2, 1)"
+          [ngClass]="{
+            'btn-success': isCellActive(2, 1),
+            'btn-danger': !isCellActive(2, 1)
+          }"
+        >
+          <span *ngIf="isCellActive(2, 1)">Rezerwuj</span>
+          <span *ngIf="!isCellActive(2, 1)">Niedostępne</span>
+        </button>
+      </td>
     </tr>
+
+    <!--12:00-14:00 -->
     <tr>
       <th>12:00-14:00</th>
       <td>Rezerwuj</td>
       <td>Rezerwuj</td>
       <td>Niedostępne</td>
     </tr>
+
+    <!--14:00-16:00 -->
     <tr>
       <th>14:00-16:00</th>
       <td>Niedostępne</td>
       <td>Rezerwuj</td>
       <td>Rezerwuj</td>
     </tr>
+
+    <!--16:00-18:00 -->
     <tr>
       <th>16:00-18:00</th>
       <td>Rezerwuj</td>
       <td>Rezerwuj</td>
       <td>Rezerwuj</td>
     </tr>
+
+    <!--18:00-20:00 -->
     <tr>
       <th>18:00-20:00</th>
       <td>Rezerwuj</td>
