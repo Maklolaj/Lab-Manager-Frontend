@@ -13,7 +13,6 @@
     </mat-radio-group>
 
     <div>
-      <button (click)="test()">TEST</button>
       <button mat-button (click)="goNext()">Dalej</button>
     </div>
   </mat-step>
@@ -29,7 +28,6 @@
     </mat-form-field>
     <button mat-raised-button (click)="picker.open()">Open</button>
 
-    <button (click)="test()">TEST</button>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
       <button
@@ -49,7 +47,10 @@
       <mat-label>Czas</mat-label>
       <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
     </mat-form-field> -->
-    <app-time-grid [reservationList]="this.reservationList"></app-time-grid>
+    <app-time-grid
+      (selectedTimes)="getTimesFromTimeGrid($event)"
+      [reservationList]="this.reservationList"
+    ></app-time-grid>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
       <button mat-button matStepperNext>Dalej</button>

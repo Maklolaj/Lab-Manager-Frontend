@@ -1,5 +1,5 @@
 import { Time } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
 import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
@@ -17,6 +17,8 @@ export class TimeGridComponent implements OnInit {
 
   selectedResStartTime: Date = new Date();
   selectedResEndTime: Date = new Date();
+
+  @Output() selectedTimes: EventEmitter<IReservationModel> = new EventEmitter();
 
   ngOnInit(): void {
     console.log(this.reservationList);
@@ -56,8 +58,13 @@ export class TimeGridComponent implements OnInit {
     }
     this.selectedResStartTime = new Date(`${selectedDay} ${selectedStartTime}`);
     this.selectedResEndTime = new Date(`${selectedDay} ${selectedEndTime}`);
-    console.log(this.selectedResStartTime);
-    console.log(this.selectedResEndTime);
+    this.selectedTimes.emit({
+      id: 0,
+      item: 0,
+      user: '',
+      startDate: this.selectedResStartTime,
+      endDate: this.selectedResEndTime,
+    });
   }
 
   isCellActive(day: number, hour: number): boolean {
