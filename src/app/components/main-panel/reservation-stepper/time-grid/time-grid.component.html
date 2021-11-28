@@ -291,3 +291,11 @@
     </tr>
   </tbody>
 </table>
+<div class="selectedResDate" *ngIf="this.selectedResStartTime">
+  <span
+    >Wybrany termin rezerwacji:
+    <b>{{
+      this.datepipe.transform(this.selectedResStartTime, "medium")
+    }}</b></span
+  >
+</div>

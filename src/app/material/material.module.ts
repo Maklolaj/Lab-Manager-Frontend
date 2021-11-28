@@ -24,6 +24,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const material = [
   MatButtonModule,
@@ -51,6 +52,7 @@ const material = [
   MatExpansionModule,
   MatSortModule,
   MatNativeDateModule,
+  MatButtonToggleModule,
 ];
 
 @NgModule({

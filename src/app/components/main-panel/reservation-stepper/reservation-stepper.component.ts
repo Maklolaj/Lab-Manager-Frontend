@@ -53,8 +53,12 @@ export class ReservationStepperComponent implements OnInit {
     });
   }
 
-  goNext() {
+  goToDateSelect() {
     if (this.itemValue.id != 0) this.stepper.next();
+  }
+
+  goToTimeSelect() {
+    if (this.userReservation.item != 0) this.stepper.next();
   }
 
   getReservationsOnThatDay() {

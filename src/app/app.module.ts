@@ -15,6 +15,7 @@ import { loginReducer } from './store/simpleReducer';
 import { TimeGridComponent } from './components/main-panel/reservation-stepper/time-grid/time-grid.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationSummaryComponent } from './components/main-panel/reservation-stepper/reservation-summary/reservation-summary.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ReservationSummaryComponent } from './components/main-panel/reservation
     StoreModule.forRoot({ isLoggedIn: loginReducer }),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

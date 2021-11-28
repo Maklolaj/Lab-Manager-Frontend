@@ -13,7 +13,7 @@
     </mat-radio-group>
 
     <div>
-      <button mat-button (click)="goNext()">Dalej</button>
+      <button mat-button (click)="goToDateSelect()">Dalej</button>
     </div>
   </mat-step>
 
@@ -53,7 +53,7 @@
     ></app-time-grid>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
-      <button mat-button matStepperNext>Dalej</button>
+      <button mat-button (click)="goToTimeSelect()">Dalej</button>
     </div>
   </mat-step>
 

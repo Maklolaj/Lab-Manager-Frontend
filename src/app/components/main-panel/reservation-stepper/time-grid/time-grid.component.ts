@@ -1,4 +1,4 @@
-import { Time } from '@angular/common';
+import { DatePipe, Time } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
@@ -10,13 +10,13 @@ import { IReservationModel } from 'src/app/models/ReservationModels/IReservation
   styleUrls: ['./time-grid.component.scss'],
 })
 export class TimeGridComponent implements OnInit {
-  constructor() {}
+  constructor(public datepipe: DatePipe) {}
 
   @Input()
   reservationList: IReservationFromDateModel[] = [];
 
-  selectedResStartTime: Date = new Date();
-  selectedResEndTime: Date = new Date();
+  selectedResStartTime: Date | null = null;
+  selectedResEndTime: Date | null = null;
 
   @Output() selectedTimes: EventEmitter<IReservationModel> = new EventEmitter();
 
