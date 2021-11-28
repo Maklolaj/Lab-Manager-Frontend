@@ -22,7 +22,15 @@ export class ReservationStepperComponent implements OnInit {
   @ViewChild('stepper', { static: false })
   stepper!: MatStepper;
 
-  itemValue: string = '';
+  itemValue: IItemModel = {
+    describiton: '',
+    id: 0,
+    isDamaged: false,
+    isDeleted: false,
+    manufacturer: '',
+    name: '',
+    productionDate: new Date(),
+  };
 
   dateFormCtrl = new FormControl(new Date());
 
@@ -43,7 +51,7 @@ export class ReservationStepperComponent implements OnInit {
   }
 
   goNext() {
-    if (this.itemValue) this.stepper.next();
+    if (this.itemValue.id != 0) this.stepper.next();
   }
 
   getReservationsOnThatDay() {
@@ -52,7 +60,7 @@ export class ReservationStepperComponent implements OnInit {
     console.log(start);
     console.log(end);
     this.reservationService
-      .getReservationsFromDate(start, end)
+      .getReservationsFromDate(start, end, this.itemValue?.id)
       .subscribe((result: any) => {
         console.log(result);
         this.reservationList = result;

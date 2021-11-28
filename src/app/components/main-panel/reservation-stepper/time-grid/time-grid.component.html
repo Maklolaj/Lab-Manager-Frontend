@@ -10,10 +10,60 @@
   <tbody>
     <tr>
       <th>8:00-10:00</th>
-      <td>Niedostępne</td>
-      <td>Rezerwuj</td>
-      <td>Niedostępne</td>
+      <td class="reservation-button-cell">
+        <button
+          (click)="getReservationTime(this.reservationList[0].reservations[0])"
+          class="btn"
+          [disabled]="this.reservationList[0].reservations[0].id != 0"
+          [ngClass]="{
+            'btn-primary': this.reservationList[0].reservations[0].id == 0,
+            'btn-danger': this.reservationList[0].reservations[0].id != 0
+          }"
+        >
+          <span *ngIf="this.reservationList[0].reservations[0].id == 0"
+            >Rezerwuj</span
+          >
+          <span *ngIf="this.reservationList[0].reservations[0].id != 0"
+            >Niedostępne</span
+          >
+        </button>
+      </td>
+      <td class="reservation-button-cell">
+        <button
+          class="btn"
+          [disabled]="this.reservationList[1].reservations[0].id != 0"
+          [ngClass]="{
+            'btn-primary': this.reservationList[1].reservations[0].id == 0,
+            'btn-danger': this.reservationList[1].reservations[0].id != 0
+          }"
+        >
+          <span *ngIf="this.reservationList[1].reservations[0].id == 0"
+            >Rezerwuj</span
+          >
+          <span *ngIf="this.reservationList[1].reservations[0].id != 0"
+            >Niedostępne</span
+          >
+        </button>
+      </td>
+      <td class="reservation-button-cell">
+        <button
+          class="btn"
+          [disabled]="this.reservationList[2].reservations[0].id != 0"
+          [ngClass]="{
+            'btn-primary': this.reservationList[2].reservations[0].id == 0,
+            'btn-danger': this.reservationList[2].reservations[0].id != 0
+          }"
+        >
+          <span *ngIf="this.reservationList[2].reservations[0].id == 0"
+            >Rezerwuj</span
+          >
+          <span *ngIf="this.reservationList[2].reservations[0].id != 0"
+            >Niedostępne</span
+          >
+        </button>
+      </td>
     </tr>
+
     <tr>
       <th>10:00-12:00</th>
       <td>Rezerwuj</td>
@@ -46,5 +96,3 @@
     </tr>
   </tbody>
 </table>
-
-<button type="button" class="btn btn-primary">Primary</button>
