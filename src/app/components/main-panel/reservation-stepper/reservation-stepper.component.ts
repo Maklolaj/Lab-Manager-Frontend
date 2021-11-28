@@ -32,14 +32,19 @@ export class ReservationStepperComponent implements OnInit {
     productionDate: new Date(),
   };
 
+  userReservation: IReservationModel = {
+    id: 0,
+    item: 0,
+    user: '',
+    startDate: null,
+    endDate: null,
+  };
+
   dateFormCtrl = new FormControl(new Date());
 
   itemList: IItemModel[] = [];
 
   reservationList: IReservationFromDateModel[] = [];
-
-  selectedReservationStartDate: Date | null = null;
-  selectedReservationEndDate: Date | null = null;
 
   ngOnInit(): void {
     this.itemService.getAllItems().subscribe((x) => {
@@ -60,14 +65,12 @@ export class ReservationStepperComponent implements OnInit {
       .subscribe((result: any) => {
         console.log(result);
         this.reservationList = result;
-
-        this.reservationList[0].day;
       });
   }
 
   getTimesFromTimeGrid(times: IReservationModel): void {
-    this.selectedReservationStartDate = times.startDate;
-    this.selectedReservationEndDate = times.endDate;
+    this.userReservation.startDate = times.startDate;
+    this.userReservation.endDate = times.endDate;
   }
 }
 

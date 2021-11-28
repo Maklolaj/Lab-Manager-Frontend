@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { loginReducer } from './store/simpleReducer';
 import { TimeGridComponent } from './components/main-panel/reservation-stepper/time-grid/time-grid.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReservationSummaryComponent } from './components/main-panel/reservation-stepper/reservation-summary/reservation-summary.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReservationsComponent,
     ReservationStepperComponent,
     TimeGridComponent,
+    ReservationSummaryComponent,
   ],
   imports: [
     BrowserModule,

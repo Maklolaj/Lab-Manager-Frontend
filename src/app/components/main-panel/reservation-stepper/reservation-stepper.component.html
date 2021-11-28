@@ -61,7 +61,9 @@
   <mat-step>
     <ng-template matStepLabel>Gotowe</ng-template>
 
-    <p>Skończone.</p>
+    <app-reservation-summary
+      [userReservation]="this.userReservation"
+    ></app-reservation-summary>
     <div>
       <button mat-button matStepperPrevious>Cofnij</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
