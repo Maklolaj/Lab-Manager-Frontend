@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -12,6 +12,7 @@ export class ReservationService {
   constructor(private httpClient: HttpClient) {}
 
   private baseUrl: string = environment.baseUrl;
+  private headers = { 'content-type': 'application/json' };
 
   getAllReservations(): Observable<IReservationModel[]> {
     //authenticationHeader
@@ -26,7 +27,6 @@ export class ReservationService {
     itemId: number
   ): Observable<IReservationFromDateModel[]> {
     const url: string = `${this.baseUrl}/reservations/from/date/`;
-    const headers = { 'content-type': 'application/json' };
 
     let body = JSON.stringify({
       startDate: startDate,
@@ -35,7 +35,22 @@ export class ReservationService {
     });
 
     return this.httpClient.post<IReservationFromDateModel[]>(url, body, {
-      headers: headers,
+      headers: this.headers,
     });
+  }
+
+  getUserReservations(): Observable<any> {
+    const url: string = `${this.baseUrl}/reservations/from/identity/`;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem('jwt')!)['token']
+        }`,
+      }),
+    };
+
+    return this.httpClient.get<IReservationModel[]>(url, httpOptions);
   }
 }

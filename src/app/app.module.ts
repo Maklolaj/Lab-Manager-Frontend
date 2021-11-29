@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,7 @@ import { TimeGridComponent } from './components/main-panel/reservation-stepper/t
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationSummaryComponent } from './components/main-panel/reservation-stepper/reservation-summary/reservation-summary.component';
 import { DatePipe } from '@angular/common';
+import '@angular/common/locales/global/pl';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { DatePipe } from '@angular/common';
     StoreModule.forRoot({ isLoggedIn: loginReducer }),
     HttpClientModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, { provide: LOCALE_ID, useValue: 'pl-PL' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

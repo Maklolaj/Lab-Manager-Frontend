@@ -1,8 +1,45 @@
-<mat-list role="list">
-    <mat-list-item role="listitem">Item 1</mat-list-item>
-    <mat-list-item role="listitem">Item 2</mat-list-item>
-    <mat-list-item role="listitem">Item 3</mat-list-item>
-    <mat-list-item role="listitem">Item 4</mat-list-item>
-    <mat-list-item role="listitem">Item 5</mat-list-item>
-    <mat-list-item role="listitem">Item 6</mat-list-item>
-  </mat-list>
+<div class="example-action-buttons">
+  <button mat-button (click)="accordion.openAll()">Rozwiń wszystko</button>
+  <button mat-button (click)="accordion.closeAll()">Zwiń wszystko</button>
+</div>
+<mat-accordion
+  *ngIf="this.userReservations"
+  class="example-headers-align"
+  multi
+>
+  <mat-expansion-panel *ngFor="let res of this.userReservations; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span
+          >Rezerwacja {{ i + 1 }}:
+          <b>{{
+            this.datepipe.transform(
+              this.userReservations[i].startDate,
+              "medium"
+            )
+          }}</b></span
+        >
+      </mat-panel-title>
+
+      <mat-panel-description>
+        <span> Czas trwania: <b>2h</b> </span>
+        <mat-icon>category</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="exp-panel-body">
+      <div class="exp-desc-one">
+        <span
+          >Koniec rezerwacji:
+          {{
+            this.datepipe.transform(this.userReservations[i].endDate, "medium")
+          }}</span
+        >
+      </div>
+
+      <div class="exp-desc-two">
+        <button mat-raised-button>Zgłoś usterkę</button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
