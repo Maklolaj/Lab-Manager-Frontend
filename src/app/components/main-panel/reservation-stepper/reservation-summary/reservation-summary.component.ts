@@ -22,9 +22,7 @@ export class ReservationSummaryComponent implements OnInit {
   @Input()
   itemList: IItemModel[] = [];
 
-  ngOnInit(): void {
-    console.log(this.userReservation.item);
-  }
+  ngOnInit(): void {}
 
   formatSummaryDate(date: Date): string {
     return `${date?.getFullYear()}-${date?.getMonth()}-${date?.getDate()} ${date?.getHours()}:${date?.getMinutes()}0`; // UCINA 0 !!

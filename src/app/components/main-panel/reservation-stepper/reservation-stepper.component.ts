@@ -49,7 +49,6 @@ export class ReservationStepperComponent implements OnInit {
   ngOnInit(): void {
     this.itemService.getAllItems().subscribe((x) => {
       this.itemList = x;
-      console.log(this.itemList);
     });
   }
 
