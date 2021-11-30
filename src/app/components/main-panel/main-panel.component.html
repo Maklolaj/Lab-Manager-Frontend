@@ -37,7 +37,7 @@
         *ngIf="this.isUserLogged.isAdminSigningIn"
         class="reserve d-flex justify-content-center"
       >
-        <button mat-raised-button (click)="showOption('newResource')">
+        <button mat-raised-button (click)="showOption('createNewResource')">
           Dodaj zasób
         </button>
       </div>
@@ -65,7 +65,7 @@
       </div>
 
       <div *ngSwitchCase="'createNewResource'">
-        <p>NEW RESOUCE</p>
+        <app-resource-creator></app-resource-creator>
       </div>
 
       <div *ngSwitchCase="'searchResources'">
