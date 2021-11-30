@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Formularz zgłoszenia usterki</h1>
+<div mat-dialog-content>
+  <p>Opisz problem:</p>
+
+  <mat-form-field style="width: 550px" appearance="fill">
+    <mat-label>Opis problemu</mat-label>
+    <textarea
+      [(ngModel)]="this.faultText"
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="12"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-button [mat-dialog-close]="this.faultText" cdkFocusInitial>
+    Wyślij zgłoszenie
+  </button>
+</div>

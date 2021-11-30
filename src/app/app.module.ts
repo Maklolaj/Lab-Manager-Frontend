@@ -15,6 +15,7 @@ import { loginReducer } from './store/simpleReducer';
 import { TimeGridComponent } from './components/main-panel/reservation-stepper/time-grid/time-grid.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationSummaryComponent } from './components/main-panel/reservation-stepper/reservation-summary/reservation-summary.component';
+import { FaultDialog } from './components/main-panel/reservations/reservations.component';
 import { DatePipe } from '@angular/common';
 import '@angular/common/locales/global/pl';
 
@@ -27,6 +28,7 @@ import '@angular/common/locales/global/pl';
     ReservationStepperComponent,
     TimeGridComponent,
     ReservationSummaryComponent,
+    FaultDialog,
   ],
   imports: [
     BrowserModule,
