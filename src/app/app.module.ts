@@ -38,7 +38,7 @@ import '@angular/common/locales/global/pl';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ isLoggedIn: loginReducer }),
+    StoreModule.forRoot({ isLoggedIn: loginReducer, isAdmin: loginReducer }),
     HttpClientModule,
   ],
   providers: [DatePipe, { provide: LOCALE_ID, useValue: 'pl-PL' }],

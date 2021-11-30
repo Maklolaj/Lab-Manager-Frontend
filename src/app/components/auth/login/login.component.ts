@@ -21,9 +21,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   signIn() {
-    this.store.dispatch(siginIn());
+    this.store.dispatch(siginIn({ isAdmin: false }));
+
     this.authService.signIn(this.tempEmail, this.tempPass).subscribe((jwt) => {
       localStorage.setItem('jwt', JSON.stringify(jwt));
+
+      let decodedJWT = atob(
+        JSON.parse(localStorage.getItem('jwt')!)['token'].split('.')[1]
+      );
+
+      this.store.dispatch(
+        siginIn({ isAdmin: JSON.parse(decodedJWT)['prn'] === '606' })
+      );
     });
     this.router.navigate(['app-main-panel']);
   }

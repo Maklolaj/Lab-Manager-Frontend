@@ -10,21 +10,16 @@ import { IMainPageState, slectLoginStatus } from './store/simpleReducer';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
-  isUserLogged:IMainPageState ={
-    isSigningIn: false
+  isUserLogged: IMainPageState = {
+    isSigningIn: false,
+    isAdminSigningIn: false,
   };
-  
-  constructor(
-      private router: Router,
-      private store:Store<any>,
-    ) {
-      
-      this.store.select(slectLoginStatus).subscribe((x:any)=>{
-        this.isUserLogged.isSigningIn = x['isSigningIn']
-      })
- 
-    }
 
-
+  constructor(private router: Router, private store: Store<any>) {
+    this.store.select(slectLoginStatus).subscribe((x: any) => {
+      this.isUserLogged.isSigningIn = x['isSigningIn'];
+      this.isUserLogged.isAdminSigningIn = x['isAdminSigningIn'];
+      console.log(this.isUserLogged.isAdminSigningIn);
+    });
+  }
 }
