@@ -15,7 +15,7 @@ export class AppComponent {
     isAdminSigningIn: false,
   };
 
-  constructor(private router: Router, private store: Store<any>) {
+  constructor(private store: Store<any>) {
     this.store.select(slectLoginStatus).subscribe((x: any) => {
       this.isUserLogged.isSigningIn = x['isSigningIn'];
       this.isUserLogged.isAdminSigningIn = x['isAdminSigningIn'];

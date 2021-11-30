@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {
+  IMainPageState,
   siginIn,
   siginOut,
   slectLoginStatus,
@@ -19,15 +20,22 @@ interface AppState {
 })
 export class MainPanelComponent implements OnInit {
   message?: Observable<string>;
-  constructor(private store: Store<AppState>, private router: Router) {}
 
   userCase: string = '';
 
-  ngOnInit(): void {}
+  isUserLogged: IMainPageState = {
+    isSigningIn: false,
+    isAdminSigningIn: false,
+  };
 
-  showReservations(): void {
-    this.userCase = 'reservations';
+  constructor(private store: Store<AppState>, private router: Router) {
+    this.store.select(slectLoginStatus).subscribe((x: any) => {
+      this.isUserLogged.isSigningIn = x['isSigningIn'];
+      this.isUserLogged.isAdminSigningIn = x['isAdminSigningIn'];
+    });
   }
+
+  ngOnInit(): void {}
 
   logout() {
     this.store.dispatch(siginOut());
@@ -35,7 +43,7 @@ export class MainPanelComponent implements OnInit {
     //this.store.select(slectLoginStatus).subscribe((x)=>(console.log(x)))
   }
 
-  makeReservation(): void {
-    this.userCase = 'makeReservation';
+  showOption(option: string): void {
+    this.userCase = option;
   }
 }

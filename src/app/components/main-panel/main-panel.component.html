@@ -22,13 +22,32 @@
   <mat-sidenav class="sidenav" #sidenav mode="side">
     <div class="options">
       <div class="reservations d-flex justify-content-center">
-        <button mat-raised-button (click)="showReservations()">
+        <button mat-raised-button (click)="showOption('reservations')">
           Twoje Rezerwacje
         </button>
       </div>
+
       <div class="reserve d-flex justify-content-center">
-        <button mat-raised-button (click)="makeReservation()">
+        <button mat-raised-button (click)="showOption('makeReservation')">
           Zarezerwuj
+        </button>
+      </div>
+
+      <div
+        *ngIf="this.isUserLogged.isAdminSigningIn"
+        class="reserve d-flex justify-content-center"
+      >
+        <button mat-raised-button (click)="showOption('newResource')">
+          Dodaj zasób
+        </button>
+      </div>
+
+      <div
+        *ngIf="this.isUserLogged.isAdminSigningIn"
+        class="reserve d-flex justify-content-center"
+      >
+        <button mat-raised-button (click)="showOption('searchResources')">
+          Przeglądaj zasoby
         </button>
       </div>
     </div>
@@ -43,6 +62,14 @@
 
       <div *ngSwitchCase="'makeReservation'">
         <app-reservation-stepper></app-reservation-stepper>
+      </div>
+
+      <div *ngSwitchCase="'createNewResource'">
+        <p>NEW RESOUCE</p>
+      </div>
+
+      <div *ngSwitchCase="'searchResources'">
+        <p>Przeglądaj zasoby</p>
       </div>
 
       <div *ngSwitchDefault>
