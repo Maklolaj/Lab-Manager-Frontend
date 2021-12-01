@@ -19,6 +19,7 @@ import { FaultDialog } from './components/main-panel/reservations/reservations.c
 import { DatePipe } from '@angular/common';
 import '@angular/common/locales/global/pl';
 import { ResourceCreatorComponent } from './components/main-panel/resource-creator/resource-creator.component';
+import { ResourcesComponent } from './components/main-panel/resources/resources.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ResourceCreatorComponent } from './components/main-panel/resource-creat
     ReservationSummaryComponent,
     FaultDialog,
     ResourceCreatorComponent,
+    ResourcesComponent,
   ],
   imports: [
     BrowserModule,
