@@ -1,0 +1,5 @@
+<h1 mat-dialog-title>Czy na pewno chcesz usunąć zasób: {{data.item.name}}?</h1>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-button [mat-dialog-close]="data.item">Usuń</button>
+</div>

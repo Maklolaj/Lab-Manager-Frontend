@@ -1,5 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { IItemModel } from 'src/app/models/IItemModel';
 import { ItemService } from 'src/app/services/item.service';
@@ -10,7 +15,11 @@ import { ItemService } from 'src/app/services/item.service';
   styleUrls: ['./resources.component.scss'],
 })
 export class ResourcesComponent implements OnInit {
-  constructor(private itemService: ItemService, public datepipe: DatePipe) {}
+  constructor(
+    private itemService: ItemService,
+    public datepipe: DatePipe,
+    public dialog: MatDialog
+  ) {}
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
@@ -20,5 +29,48 @@ export class ResourcesComponent implements OnInit {
     this.itemService.getAllItems().subscribe((x) => {
       this.itemList = x;
     });
+  }
+
+  openDeleteConfirmationDialog(item: IItemModel): void {
+    const dialogRef = this.dialog.open(DeleteResourceDialog, {
+      width: '600px',
+      data: { item },
+    });
+
+    dialogRef.afterClosed().subscribe((result: IItemModel) => {
+      console.log(result.name);
+    });
+  }
+}
+
+@Component({
+  selector: 'app-delete-resource-dialog',
+  templateUrl: './resources-dialogs/delete-resource-dialog.html',
+})
+export class DeleteResourceDialog {
+  constructor(
+    public dialogRef: MatDialogRef<DeleteResourceDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'app-modify-resource-dialog',
+  templateUrl: './resources-dialogs/modify-resource-dialog.html',
+})
+export class ModifyResourceDialog {
+  constructor(
+    public dialogRef: MatDialogRef<ModifyResourceDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+
+  itemToUpdae: IItemModel;
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

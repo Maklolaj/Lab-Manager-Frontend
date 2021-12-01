@@ -33,7 +33,13 @@
       <div class="resource-desc-two">
         <div>
           <button class="item-modify-btn" mat-raised-button>Modyfikuj</button>
-          <button class="item-delete-btn" mat-raised-button>Usuń</button>
+          <button
+            class="item-delete-btn"
+            mat-raised-button
+            (click)="openDeleteConfirmationDialog(item)"
+          >
+            Usuń
+          </button>
         </div>
       </div>
     </div>

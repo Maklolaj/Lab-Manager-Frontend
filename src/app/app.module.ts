@@ -16,6 +16,8 @@ import { TimeGridComponent } from './components/main-panel/reservation-stepper/t
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationSummaryComponent } from './components/main-panel/reservation-stepper/reservation-summary/reservation-summary.component';
 import { FaultDialog } from './components/main-panel/reservations/reservations.component';
+import { DeleteResourceDialog } from './components/main-panel/resources/resources.component';
+import { ModifyResourceDialog } from './components/main-panel/resources/resources.component';
 import { DatePipe } from '@angular/common';
 import '@angular/common/locales/global/pl';
 import { ResourceCreatorComponent } from './components/main-panel/resource-creator/resource-creator.component';
@@ -33,6 +35,8 @@ import { ResourcesComponent } from './components/main-panel/resources/resources.
     FaultDialog,
     ResourceCreatorComponent,
     ResourcesComponent,
+    DeleteResourceDialog,
+    ModifyResourceDialog,
   ],
   imports: [
     BrowserModule,
