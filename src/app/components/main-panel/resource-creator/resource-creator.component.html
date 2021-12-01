@@ -1,23 +1,45 @@
-<mat-form-field appearance="outline">
-  <mat-label>Nazwa</mat-label>
-  <input matInput placeholder="Wpisz nazwę" />
-</mat-form-field>
+<div class="resource-creation-wrapper">
+  <span> <b>Dodaj nowy zasób </b> </span>
+  <mat-form-field>
+    <mat-label>Nazwa</mat-label>
+    <input matInput placeholder="Wpisz nazwę" [(ngModel)]="resource.name" />
+  </mat-form-field>
 
-<mat-form-field appearance="outline">
-  <mat-label>Producent</mat-label>
-  <input matInput placeholder="Wpisz producenta" />
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Producent</mat-label>
+    <input
+      matInput
+      placeholder="Wpisz producenta"
+      [(ngModel)]="resource.manufacturer"
+    />
+  </mat-form-field>
 
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Data produkcji</mat-label>
-  <input matInput [matDatepicker]="picker" (dateInput)="dateChange($event)" />
-  <mat-datepicker-toggle matSuffix [for]="picker">
-    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-  </mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Data produkcji</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      (dateInput)="dateChange($event)"
+      [(ngModel)]="resource.productionDate"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-<mat-form-field appearance="outline">
-  <mat-label>Opis</mat-label>
-  <textarea matInput placeholder="Wpisz opis"></textarea>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Opis</mat-label>
+    <textarea
+      matInput
+      placeholder="Wpisz opis"
+      [(ngModel)]="resource.describiton"
+    ></textarea>
+  </mat-form-field>
+
+  <div class="resource-creator-footer-buttons">
+    <button mat-raised-button (click)="resetFormValues()">Reset</button>
+
+    <button mat-raised-button (click)="submitResourceCreation()">Dodaj</button>
+  </div>
+</div>

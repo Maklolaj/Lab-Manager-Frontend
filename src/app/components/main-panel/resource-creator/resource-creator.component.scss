@@ -1,0 +1,15 @@
+.resource-creation-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  padding-left: 5%;
+  padding-top: 3%;
+
+  .resource-creator-footer-buttons {
+    padding-bottom: 3%;
+    display: flex;
+    justify-content: space-between;
+    width: 170px;
+  }
+}
