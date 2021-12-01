@@ -23,7 +23,7 @@ export class ReservationsComponent implements OnInit {
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
-  userReservations: IReservationModel[] | null = null;
+  userReservations: IReservationModel[];
 
   ngOnInit(): void {
     this.reservationService.getUserReservations().subscribe((res) => {
