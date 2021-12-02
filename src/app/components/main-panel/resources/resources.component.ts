@@ -41,6 +41,17 @@ export class ResourcesComponent implements OnInit {
       console.log(result.name);
     });
   }
+
+  openModifyDialog(item: IItemModel): void {
+    const dialogRef = this.dialog.open(ModifyResourceDialog, {
+      width: '600px',
+      data: { item },
+    });
+
+    dialogRef.afterClosed().subscribe((result: IItemModel) => {
+      console.log(result);
+    });
+  }
 }
 
 @Component({
@@ -68,7 +79,15 @@ export class ModifyResourceDialog {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  itemToUpdae: IItemModel;
+  itemToUpdate: IItemModel = {
+    describiton: '',
+    manufacturer: '',
+    name: '',
+    productionDate: new Date(),
+    id: 0,
+    isDamaged: false,
+    isDeleted: false,
+  };
 
   onNoClick(): void {
     this.dialogRef.close();

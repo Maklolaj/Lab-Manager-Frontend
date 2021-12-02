@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Modyfikuj zasób</h1>
+<div mat-dialog-content>
+  <div class="name-manuf-inputs">
+    <mat-form-field
+      class="name-form-input"
+      style="margin-right: 30px"
+      appearance="fill"
+    >
+      <mat-label>Nazwa</mat-label>
+      <input matInput [(ngModel)]="data.item.name" />
+    </mat-form-field>
+
+    <mat-form-field class="manuf-form-input" appearance="fill">
+      <mat-label>Producent</mat-label>
+      <input matInput [(ngModel)]="data.item.manufacturer" />
+    </mat-form-field>
+  </div>
+  <mat-form-field style="width: 550px" appearance="fill">
+    <mat-label>Opis</mat-label>
+    <textarea
+      [(ngModel)]="data.item.describiton"
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="12"
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Data produkjci</mat-label>
+    <input
+      matInput
+      [(ngModel)]="data.item.productionDate"
+      [matDatepicker]="picker"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuluj</button>
+  <button mat-button [mat-dialog-close]="data.item" cdkFocusInitial>
+    Modyfikuj
+  </button>
+</div>
