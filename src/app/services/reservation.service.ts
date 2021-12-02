@@ -11,14 +11,18 @@ import { IReservationModel } from '../models/ReservationModels/IReservationModel
 export class ReservationService {
   constructor(private httpClient: HttpClient) {}
 
-  private baseUrl: string = environment.baseUrl;
-  private headers = { 'content-type': 'application/json' };
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${
+        JSON.parse(localStorage.getItem('jwt')!)['token']
+      }`,
+    }),
+  };
 
   getAllReservations(): Observable<IReservationModel[]> {
-    //authenticationHeader
-    const url: string = `${this.baseUrl}/reservations/`;
-
-    return this.httpClient.get<IReservationModel[]>(url);
+    const url: string = `${environment.baseUrl}/reservations/`;
+    return this.httpClient.get<IReservationModel[]>(url, this.httpOptions);
   }
 
   getReservationsFromDate(
@@ -26,31 +30,22 @@ export class ReservationService {
     endDate: string,
     itemId: number
   ): Observable<IReservationFromDateModel[]> {
-    const url: string = `${this.baseUrl}/reservations/from/date/`;
-
-    let body = JSON.stringify({
+    const url: string = `${environment.baseUrl}/reservations/from/date/`;
+    let body = {
       startDate: startDate,
       endDate: endDate,
       itemId: itemId,
-    });
-
-    return this.httpClient.post<IReservationFromDateModel[]>(url, body, {
-      headers: this.headers,
-    });
-  }
-
-  getUserReservations(): Observable<any> {
-    const url: string = `${this.baseUrl}/reservations/from/identity/`;
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem('jwt')!)['token']
-        }`,
-      }),
     };
 
-    return this.httpClient.get<IReservationModel[]>(url, httpOptions);
+    return this.httpClient.post<IReservationFromDateModel[]>(
+      url,
+      body,
+      this.httpOptions
+    );
+  }
+
+  getUserReservations(): Observable<IReservationModel[]> {
+    const url: string = `${environment.baseUrl}/reservations/from/identity/`;
+    return this.httpClient.get<IReservationModel[]>(url, this.httpOptions);
   }
 }
