@@ -1,5 +1,5 @@
 export interface IItemModel {
-  describiton: string;
+  description: string;
   id: number;
   isDamaged: boolean;
   isDeleted: boolean;

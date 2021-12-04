@@ -23,7 +23,7 @@ export class ReservationStepperComponent implements OnInit {
   stepper!: MatStepper;
 
   itemValue: IItemModel = {
-    describiton: '',
+    description: '',
     id: 0,
     isDamaged: false,
     isDeleted: false,

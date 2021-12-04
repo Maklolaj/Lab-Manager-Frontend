@@ -80,7 +80,7 @@ export class ModifyResourceDialog {
   ) {}
 
   itemToUpdate: IItemModel = {
-    describiton: '',
+    description: '',
     manufacturer: '',
     name: '',
     productionDate: new Date(),

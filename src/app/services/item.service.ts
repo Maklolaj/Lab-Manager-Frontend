@@ -30,7 +30,7 @@ export class ItemService {
       name: item.name,
       manufacturer: item.manufacturer,
       productionDate: item.productionDate,
-      describiton: item.describiton,
+      description: item.description,
     };
     return this.httpClient.post(url, body, this.httpOptions);
   }
@@ -41,7 +41,7 @@ export class ItemService {
       name: item.name,
       manufacturer: item.manufacturer,
       productionDate: item.productionDate,
-      describiton: item.describiton,
+      description: item.description,
     };
     return this.httpClient.put(url, body, this.httpOptions);
   }
