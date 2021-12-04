@@ -19,7 +19,6 @@ export class AppComponent {
     this.store.select(slectLoginStatus).subscribe((x: any) => {
       this.isUserLogged.isSigningIn = x['isSigningIn'];
       this.isUserLogged.isAdminSigningIn = x['isAdminSigningIn'];
-      console.log(this.isUserLogged.isAdminSigningIn);
     });
   }
 }

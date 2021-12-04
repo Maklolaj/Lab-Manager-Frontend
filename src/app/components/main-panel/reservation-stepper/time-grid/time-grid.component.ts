@@ -21,9 +21,7 @@ export class TimeGridComponent implements OnInit {
 
   @Output() selectedTimes: EventEmitter<Slot> = new EventEmitter();
 
-  ngOnInit(): void {
-    console.log(this.reservationList);
-  }
+  ngOnInit(): void {}
 
   getReservationTime(day: number, hour: number): void {
     let selectedDay = this.reservationList[day].day;

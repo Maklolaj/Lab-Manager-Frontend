@@ -17,7 +17,18 @@
     </mat-card-content>
     <mat-divider inset></mat-divider>
     <mat-card-actions>
-      <button mat-button>Potwierdź Rezerwację</button>
+      <button
+        mat-button
+        (click)="
+          confirmReservation(
+            this.userReservation.item,
+            this.userReservation.startDate,
+            this.userReservation.endDate
+          )
+        "
+      >
+        Potwierdź Rezerwację
+      </button>
     </mat-card-actions>
     <mat-card-footer> </mat-card-footer>
   </mat-card>

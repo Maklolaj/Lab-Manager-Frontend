@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-reservation-summary',
@@ -8,7 +9,7 @@ import { IReservationModel } from 'src/app/models/ReservationModels/IReservation
   styleUrls: ['./reservation-summary.component.scss'],
 })
 export class ReservationSummaryComponent implements OnInit {
-  constructor() {}
+  constructor(private reservationService: ReservationService) {}
 
   @Input()
   userReservation: IReservationModel;
@@ -29,5 +30,18 @@ export class ReservationSummaryComponent implements OnInit {
       }
     }
     return 'Item not found';
+  }
+
+  confirmReservation(item: IItemModel, startDate: Date, endDate: Date) {
+    if (item) {
+      alert(`Rezerwacja na zasób ${item.name} została stworzona`);
+      this.reservationService
+        .createReservation(item.id, startDate, endDate)
+        .subscribe((x) => {
+          console.log(x);
+        });
+    } else {
+      alert(`Operacja nieudana`);
+    }
   }
 }

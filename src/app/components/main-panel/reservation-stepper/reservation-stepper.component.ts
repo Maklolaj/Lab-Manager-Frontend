@@ -75,7 +75,6 @@ export class ReservationStepperComponent implements OnInit {
     this.reservationService
       .getReservationsFromDate(start, end, this.itemValue?.id)
       .subscribe((result: any) => {
-        console.log(result);
         this.reservationList = result;
       });
   }

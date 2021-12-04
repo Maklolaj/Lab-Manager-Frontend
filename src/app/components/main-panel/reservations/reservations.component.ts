@@ -31,7 +31,6 @@ export class ReservationsComponent implements OnInit {
   ngOnInit(): void {
     this.reservationService.getUserReservations().subscribe((res) => {
       this.userReservations = res;
-      console.log(this.userReservations);
     });
   }
 
@@ -42,10 +41,11 @@ export class ReservationsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`The dialog was closed with value: ${result}`);
       if (result) {
-        console.log('Zgłoszono usterke');
+        alert('Zgłoszono usterke');
         //this.faultService.createFault(item.id, result);
+      } else {
+        alert(`Operacja nieudana`);
       }
     });
   }
