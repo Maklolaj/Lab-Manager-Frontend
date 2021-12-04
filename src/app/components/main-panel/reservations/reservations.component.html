@@ -38,7 +38,12 @@
       </div>
 
       <div class="exp-desc-two">
-        <button mat-raised-button (click)="openDialog()">Zgłoś usterkę</button>
+        <button
+          mat-raised-button
+          (click)="openDialog(this.userReservations[i].item)"
+        >
+          Zgłoś usterkę
+        </button>
       </div>
     </div>
   </mat-expansion-panel>

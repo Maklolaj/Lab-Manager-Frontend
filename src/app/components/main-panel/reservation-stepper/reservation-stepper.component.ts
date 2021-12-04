@@ -32,13 +32,7 @@ export class ReservationStepperComponent implements OnInit {
     productionDate: new Date(),
   };
 
-  userReservation: IReservationModel = {
-    id: 0,
-    item: 0,
-    user: '',
-    startDate: new Date(),
-    endDate: new Date(),
-  };
+  userReservation: IReservationModel;
 
   dateFormCtrl = new FormControl(new Date());
 
@@ -57,7 +51,7 @@ export class ReservationStepperComponent implements OnInit {
   }
 
   goToTimeSelect() {
-    if (this.userReservation.item != 0) this.stepper.next();
+    if (this.userReservation.item.id != 0) this.stepper.next();
   }
 
   getReservationsOnThatDay() {
@@ -71,10 +65,10 @@ export class ReservationStepperComponent implements OnInit {
       });
   }
 
-  getTimesFromTimeGrid(times: IReservationModel): void {
+  getTimesFromTimeGrid(times: any): void {
     this.userReservation.startDate = times.startDate;
     this.userReservation.endDate = times.endDate;
-    this.userReservation.item = this.itemValue.id;
+    this.userReservation.item.id = this.itemValue.id;
   }
 }
 

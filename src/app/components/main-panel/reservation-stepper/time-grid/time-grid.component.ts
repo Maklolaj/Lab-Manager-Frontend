@@ -18,7 +18,7 @@ export class TimeGridComponent implements OnInit {
   selectedResStartTime: Date | null = null;
   selectedResEndTime: Date | null = null;
 
-  @Output() selectedTimes: EventEmitter<IReservationModel> = new EventEmitter();
+  @Output() selectedTimes: EventEmitter<any> = new EventEmitter();
 
   ngOnInit(): void {
     console.log(this.reservationList);
@@ -59,9 +59,6 @@ export class TimeGridComponent implements OnInit {
     this.selectedResStartTime = new Date(`${selectedDay} ${selectedStartTime}`);
     this.selectedResEndTime = new Date(`${selectedDay} ${selectedEndTime}`);
     this.selectedTimes.emit({
-      id: 0,
-      item: 0,
-      user: '',
       startDate: this.selectedResStartTime,
       endDate: this.selectedResEndTime,
     });

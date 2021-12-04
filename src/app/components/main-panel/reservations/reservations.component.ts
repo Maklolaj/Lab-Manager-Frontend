@@ -6,7 +6,9 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
+import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
+import { FaultService } from 'src/app/services/fault.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
@@ -17,6 +19,7 @@ import { ReservationService } from 'src/app/services/reservation.service';
 export class ReservationsComponent implements OnInit {
   constructor(
     private reservationService: ReservationService,
+    private faultService: FaultService,
     public datepipe: DatePipe,
     public dialog: MatDialog
   ) {}
@@ -32,7 +35,7 @@ export class ReservationsComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
+  openDialog(item: IItemModel): void {
     const dialogRef = this.dialog.open(FaultDialog, {
       width: '650px',
       data: {},
@@ -40,6 +43,10 @@ export class ReservationsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`The dialog was closed with value: ${result}`);
+      if (result) {
+        console.log('Zgłoszono usterke');
+        //this.faultService.createFault(item.id, result);
+      }
     });
   }
 }

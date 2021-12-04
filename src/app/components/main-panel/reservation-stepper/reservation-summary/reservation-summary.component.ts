@@ -11,13 +11,7 @@ export class ReservationSummaryComponent implements OnInit {
   constructor() {}
 
   @Input()
-  userReservation: IReservationModel = {
-    id: 0,
-    item: 0,
-    user: '',
-    startDate: new Date(), //null
-    endDate: new Date(), //null
-  };
+  userReservation: IReservationModel;
 
   @Input()
   itemList: IItemModel[] = [];

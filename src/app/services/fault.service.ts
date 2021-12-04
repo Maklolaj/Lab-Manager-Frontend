@@ -24,11 +24,11 @@ export class FaultService {
     return this.httpClient.get<IFaultModel[]>(url, this.httpOptions);
   }
 
-  createItem(fault: IFaultModel): Observable<any> {
+  createFault(itemId: number, faultDescription: string): Observable<any> {
     const url: string = `${environment.baseUrl}/fault/`;
     const body = {
-      itemId: fault.item.id,
-      description: fault.description,
+      itemId: itemId,
+      description: faultDescription,
     };
     return this.httpClient.post(url, body, this.httpOptions);
   }
