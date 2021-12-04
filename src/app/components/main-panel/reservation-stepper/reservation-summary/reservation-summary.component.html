@@ -1,7 +1,7 @@
 <div class="reservation-summary-wrapper">
   <mat-card class="reservation-summary-card">
     <mat-card-title>Szczegóły rezerwacji</mat-card-title>
-    <mat-card-content>
+    <mat-card-content *ngIf="this.userReservation.item">
       <p>
         Nazwa przedmiotu:
         <b>{{ this.getItemName(this.userReservation.item.id) }}</b>

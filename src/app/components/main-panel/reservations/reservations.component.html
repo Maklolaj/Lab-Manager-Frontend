@@ -2,11 +2,7 @@
   <button mat-button (click)="accordion.openAll()">Rozwiń wszystko</button>
   <button mat-button (click)="accordion.closeAll()">Zwiń wszystko</button>
 </div>
-<mat-accordion
-  *ngIf="this.userReservations"
-  class="example-headers-align"
-  multi
->
+<mat-accordion class="example-headers-align" multi>
   <mat-expansion-panel *ngFor="let res of this.userReservations; let i = index">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -40,7 +36,7 @@
       <div class="exp-desc-two">
         <button
           mat-raised-button
-          (click)="openDialog(this.userReservations[i].item)"
+          (click)="openDialog(this.userReservations[i].item!)"
         >
           Zgłoś usterkę
         </button>

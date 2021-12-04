@@ -7,6 +7,7 @@ import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
+import { Slot } from './time-grid/time-grid.component';
 
 @Component({
   selector: 'app-reservation-stepper',
@@ -32,7 +33,21 @@ export class ReservationStepperComponent implements OnInit {
     productionDate: new Date(),
   };
 
-  userReservation: IReservationModel;
+  userReservation: IReservationModel = {
+    id: 0,
+    item: {
+      description: '',
+      id: 0,
+      isDamaged: false,
+      isDeleted: false,
+      manufacturer: '',
+      name: '',
+      productionDate: new Date(),
+    },
+    user: '',
+    startDate: new Date(),
+    endDate: new Date(),
+  };
 
   dateFormCtrl = new FormControl(new Date());
 
@@ -65,7 +80,7 @@ export class ReservationStepperComponent implements OnInit {
       });
   }
 
-  getTimesFromTimeGrid(times: any): void {
+  getTimesFromTimeGrid(times: Slot): void {
     this.userReservation.startDate = times.startDate;
     this.userReservation.endDate = times.endDate;
     this.userReservation.item.id = this.itemValue.id;

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IItemModel } from 'src/app/models/IItemModel';
 import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
 import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-time-grid',
@@ -18,7 +19,7 @@ export class TimeGridComponent implements OnInit {
   selectedResStartTime: Date | null = null;
   selectedResEndTime: Date | null = null;
 
-  @Output() selectedTimes: EventEmitter<any> = new EventEmitter();
+  @Output() selectedTimes: EventEmitter<Slot> = new EventEmitter();
 
   ngOnInit(): void {
     console.log(this.reservationList);
@@ -67,4 +68,9 @@ export class TimeGridComponent implements OnInit {
   isCellActive(day: number, hour: number): boolean {
     return this.reservationList[day].reservations[hour].id == 0;
   }
+}
+
+export interface Slot {
+  startDate: Date;
+  endDate: Date;
 }
