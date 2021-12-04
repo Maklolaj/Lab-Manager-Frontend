@@ -19,7 +19,6 @@
     <input
       matInput
       [matDatepicker]="picker"
-      (dateInput)="dateChange($event)"
       [(ngModel)]="resource.productionDate"
     />
     <mat-datepicker-toggle matSuffix [for]="picker">

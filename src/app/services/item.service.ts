@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { IItemModel } from '../models/IItemModel';
+import { IResource } from '../models/IResourceModel';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class ItemService {
     return this.httpClient.get<IItemModel[]>(url, this.httpOptions);
   }
 
-  createItem(item: IItemModel): Observable<any> {
+  createItem(item: IResource): Observable<any> {
     const url: string = `${environment.baseUrl}/item/`;
     const body = {
       name: item.name,

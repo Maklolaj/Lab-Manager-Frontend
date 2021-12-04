@@ -38,7 +38,12 @@ export class ResourcesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: IItemModel) => {
-      console.log(result.name);
+      if (result) {
+        alert(`Usunięto ${result.name}`);
+        // this.itemService.deleteItem(result)
+      } else {
+        alert(`Operacja nieudana`);
+      }
     });
   }
 
@@ -49,7 +54,12 @@ export class ResourcesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: IItemModel) => {
-      console.log(result);
+      if (result) {
+        alert(`Zmodyfikowano ${result.name}`);
+        //this.itemService.modifyItem(result)
+      } else {
+        alert(`Operacja nieudana`);
+      }
     });
   }
 }

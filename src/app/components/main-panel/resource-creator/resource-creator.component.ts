@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { Resource } from 'src/app/models/IResourceModel';
+import { IResource } from 'src/app/models/IResourceModel';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-resource-creator',
@@ -8,22 +8,22 @@ import { Resource } from 'src/app/models/IResourceModel';
   styleUrls: ['./resource-creator.component.scss'],
 })
 export class ResourceCreatorComponent implements OnInit {
-  resource = new Resource();
+  resource = new IResource();
 
-  constructor() {}
+  constructor(private itemServie: ItemService) {}
 
   ngOnInit(): void {}
 
-  dateChange(event: MatDatepickerInputEvent<Date>): void {
-    console.log(`Data: ${event.value}`);
-    console.log(this.resource);
-  }
-
   submitResourceCreation(): void {
-    alert(`Zasób ${this.resource.name} został dodany`);
+    if (this.resource.name) {
+      alert(`Zasób ${this.resource.name} został dodany`);
+      //this.itemServie.createItem(this.resource)
+    } else {
+      alert(`Operacja nieudana`);
+    }
   }
 
   resetFormValues(): void {
-    this.resource = new Resource();
+    this.resource = new IResource();
   }
 }
