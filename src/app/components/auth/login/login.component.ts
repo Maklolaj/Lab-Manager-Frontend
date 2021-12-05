@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/services/auth.service';
-import { siginIn } from 'src/app/store/simpleReducer';
+import { siginIn } from 'src/app/store/reducers/auth.reducers';
 
 @Component({
   selector: 'app-login',

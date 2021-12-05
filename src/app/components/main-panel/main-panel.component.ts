@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import {
-  IMainPageState,
-  siginIn,
-  siginOut,
-  slectLoginStatus,
-} from 'src/app/store/simpleReducer';
+import { siginOut } from 'src/app/store/reducers/auth.reducers';
 import { Router } from '@angular/router';
+import { slectLoginStatus } from 'src/app/store/selectors/auth.selectors';
+import { IMainPageState } from 'src/app/store/models/IAuthState';
 
 interface AppState {
   message: string;

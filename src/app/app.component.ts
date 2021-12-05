@@ -2,7 +2,8 @@ import { Router } from '@angular/router';
 import { Component, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { IMainPageState, slectLoginStatus } from './store/simpleReducer';
+import { slectLoginStatus } from './store/selectors/auth.selectors';
+import { IMainPageState } from './store/models/IAuthState';
 
 @Component({
   selector: 'app-root',

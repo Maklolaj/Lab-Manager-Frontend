@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservationsComponent } from './components/main-panel/reservations/reservations.component';
 import { ReservationStepperComponent } from './components/main-panel/reservation-stepper/reservation-stepper.component';
 import { StoreModule } from '@ngrx/store';
-import { loginReducer } from './store/simpleReducer';
+import { loginReducer } from './store/reducers/auth.reducers';
 import { TimeGridComponent } from './components/main-panel/reservation-stepper/time-grid/time-grid.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationSummaryComponent } from './components/main-panel/reservation-stepper/reservation-summary/reservation-summary.component';
