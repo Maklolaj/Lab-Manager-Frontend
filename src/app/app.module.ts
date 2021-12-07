@@ -23,6 +23,7 @@ import '@angular/common/locales/global/pl';
 import { ResourceCreatorComponent } from './components/main-panel/resource-creator/resource-creator.component';
 import { ResourcesComponent } from './components/main-panel/resources/resources.component';
 import { AnnouncementsComponent } from './components/main-panel/announcements/announcements.component';
+import { UserProfileComponent } from './components/main-panel/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AnnouncementsComponent } from './components/main-panel/announcements/an
     DeleteResourceDialog,
     ModifyResourceDialog,
     AnnouncementsComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
