@@ -33,6 +33,12 @@
         </button>
       </div>
 
+      <div class="reserve d-flex justify-content-center">
+        <button mat-raised-button (click)="showOption('yourProfile')">
+          Twój profil
+        </button>
+      </div>
+
       <div
         *ngIf="this.isUserLogged.isAdminSigningIn"
         class="reserve d-flex justify-content-center"
@@ -46,7 +52,7 @@
         *ngIf="this.isUserLogged.isAdminSigningIn"
         class="reserve d-flex justify-content-center"
       >
-        <button mat-raised-button (click)="showOption('searchResources')"> 
+        <button mat-raised-button (click)="showOption('searchResources')">
           Przeglądaj zasoby
         </button>
       </div>
@@ -63,6 +69,8 @@
       <div *ngSwitchCase="'makeReservation'">
         <app-reservation-stepper></app-reservation-stepper>
       </div>
+
+      <div *ngSwitchCase="'yourProfile'">Twój profil</div>
 
       <div *ngSwitchCase="'createNewResource'">
         <app-resource-creator></app-resource-creator>
