@@ -22,6 +22,7 @@ import { DatePipe } from '@angular/common';
 import '@angular/common/locales/global/pl';
 import { ResourceCreatorComponent } from './components/main-panel/resource-creator/resource-creator.component';
 import { ResourcesComponent } from './components/main-panel/resources/resources.component';
+import { AnnouncementsComponent } from './components/main-panel/announcements/announcements.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ResourcesComponent } from './components/main-panel/resources/resources.
     ResourcesComponent,
     DeleteResourceDialog,
     ModifyResourceDialog,
+    AnnouncementsComponent,
   ],
   imports: [
     BrowserModule,

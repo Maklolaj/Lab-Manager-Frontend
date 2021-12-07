@@ -46,7 +46,7 @@
         *ngIf="this.isUserLogged.isAdminSigningIn"
         class="reserve d-flex justify-content-center"
       >
-        <button mat-raised-button (click)="showOption('searchResources')">
+        <button mat-raised-button (click)="showOption('searchResources')"> 
           Przeglądaj zasoby
         </button>
       </div>
@@ -73,7 +73,7 @@
       </div>
 
       <div *ngSwitchDefault>
-        <p>TEST CASE</p>
+        <app-announcements></app-announcements>
       </div>
     </ng-container>
 
