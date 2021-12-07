@@ -70,7 +70,9 @@
         <app-reservation-stepper></app-reservation-stepper>
       </div>
 
-      <div *ngSwitchCase="'yourProfile'">Twój profil</div>
+      <div *ngSwitchCase="'yourProfile'">
+        <app-user-profile></app-user-profile>
+      </div>
 
       <div *ngSwitchCase="'createNewResource'">
         <app-resource-creator></app-resource-creator>
