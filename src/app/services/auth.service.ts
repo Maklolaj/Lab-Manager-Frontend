@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { IBrowseUserModel } from '../models/IBrowseUserModel';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,12 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   private baseUrl: string = environment.baseUrl;
-  private header = { 'content-type': 'application/json' };
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+    }),
+  };
 
   signIn(email: string, password: string): Observable<any> {
     const url: string = `${this.baseUrl}/identity/login/`;
@@ -20,8 +26,11 @@ export class AuthService {
       password: password,
     });
 
-    return this.httpClient.post<any>(url, body, {
-      headers: this.header,
-    });
+    return this.httpClient.post<any>(url, body, this.httpOptions);
+  }
+
+  getAllUsers() {
+    const url: string = `${this.baseUrl}/identity/users/`;
+    return this.httpClient.get<IBrowseUserModel[]>(url, this.httpOptions);
   }
 }
