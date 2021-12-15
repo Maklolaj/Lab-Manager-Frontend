@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { IItemModel } from '../models/IItemModel';
 import { IReservationFromDateModel } from '../models/ReservationModels/IReservationFromDateModel';
 import { IReservationModel } from '../models/ReservationModels/IReservationModel';
 
