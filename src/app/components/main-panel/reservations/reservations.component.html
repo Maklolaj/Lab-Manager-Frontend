@@ -1,6 +1,18 @@
-<div class="example-action-buttons">
-  <button mat-button (click)="accordion.openAll()">Rozwiń wszystko</button>
-  <button mat-button (click)="accordion.closeAll()">Zwiń wszystko</button>
+<div class="main-action-buttons">
+  <button
+    mat-raised-button
+    (click)="accordion.openAll()"
+    class="open-all-action-buttons"
+  >
+    Rozwiń wszystko
+  </button>
+  <button
+    mat-raised-button
+    (click)="accordion.closeAll()"
+    class="close-all-action-buttons"
+  >
+    Zwiń wszystko
+  </button>
 </div>
 <mat-accordion class="example-headers-align" multi>
   <mat-expansion-panel *ngFor="let res of this.userReservations; let i = index">
