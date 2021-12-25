@@ -24,6 +24,7 @@ import { ResourceCreatorComponent } from './components/main-panel/resource-creat
 import { ResourcesComponent } from './components/main-panel/resources/resources.component';
 import { AnnouncementsComponent } from './components/main-panel/announcements/announcements.component';
 import { UserProfileComponent } from './components/main-panel/user-profile/user-profile.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UserProfileComponent } from './components/main-panel/user-profile/user-
     ModifyResourceDialog,
     AnnouncementsComponent,
     UserProfileComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

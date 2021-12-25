@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  signIn() {
+  signIn(): void {
     this.store.dispatch(siginIn({ isAdmin: false }));
 
     this.authService.signIn(this.tempEmail, this.tempPass).subscribe((jwt) => {
@@ -35,5 +35,9 @@ export class LoginComponent implements OnInit {
       );
     });
     this.router.navigate(['app-main-panel']);
+  }
+
+  register(): void {
+    this.router.navigate(['register']);
   }
 }
