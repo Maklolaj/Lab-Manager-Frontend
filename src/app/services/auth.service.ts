@@ -29,8 +29,19 @@ export class AuthService {
     return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 
-  getAllUsers() {
+  getAllUsers(): Observable<any> {
     const url: string = `${this.baseUrl}/identity/users/`;
     return this.httpClient.get<IBrowseUserModel[]>(url, this.httpOptions);
+  }
+
+  registerUser(email: string, password: string): Observable<any> {
+    const url: string = `${this.baseUrl}/identity/register/`;
+
+    const body = JSON.stringify({
+      email: email,
+      password: password,
+    });
+
+    return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 }
