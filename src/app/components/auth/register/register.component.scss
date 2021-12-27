@@ -1,6 +1,9 @@
 .registration-wrapper {
+  display: inline-grid;
+  width: 100%;
+  justify-content: center;
   img {
-    width: 20%;
+    width: 50%;
     height: auto;
   }
 }
