@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPanelComponent } from './components/main-panel/main-panel.component';
-import { LoginComponent } from './components/auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservationsComponent } from './components/main-panel/reservations/reservations.component';
 import { ReservationStepperComponent } from './components/main-panel/reservation-stepper/reservation-stepper.component';
@@ -24,13 +23,12 @@ import { ResourceCreatorComponent } from './components/main-panel/resource-creat
 import { ResourcesComponent } from './components/main-panel/resources/resources.component';
 import { AnnouncementsComponent } from './components/main-panel/announcements/announcements.component';
 import { UserProfileComponent } from './components/main-panel/user-profile/user-profile.component';
-import { RegisterComponent } from './components/auth/register/register.component';
+import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPanelComponent,
-    LoginComponent,
     ReservationsComponent,
     ReservationStepperComponent,
     TimeGridComponent,
@@ -42,7 +40,6 @@ import { RegisterComponent } from './components/auth/register/register.component
     ModifyResourceDialog,
     AnnouncementsComponent,
     UserProfileComponent,
-    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +51,7 @@ import { RegisterComponent } from './components/auth/register/register.component
     ReactiveFormsModule,
     StoreModule.forRoot({ isLoggedIn: loginReducer, isAdmin: loginReducer }),
     HttpClientModule,
+    AuthModule,
   ],
   providers: [DatePipe, { provide: LOCALE_ID, useValue: 'pl-PL' }],
   bootstrap: [AppComponent],
