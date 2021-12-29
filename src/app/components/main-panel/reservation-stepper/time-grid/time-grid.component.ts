@@ -1,16 +1,13 @@
 import { DatePipe, Time } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IItemModel } from 'src/app/models/IItemModel';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IReservationFromDateModel } from 'src/app/models/ReservationModels/IReservationFromDateModel';
-import { IReservationModel } from 'src/app/models/ReservationModels/IReservationModel';
-import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-time-grid',
   templateUrl: './time-grid.component.html',
   styleUrls: ['./time-grid.component.scss'],
 })
-export class TimeGridComponent implements OnInit {
+export class TimeGridComponent {
   constructor(public datepipe: DatePipe) {}
 
   @Input()
@@ -20,8 +17,6 @@ export class TimeGridComponent implements OnInit {
   selectedResEndTime: Date | null = null;
 
   @Output() selectedTimes: EventEmitter<Slot> = new EventEmitter();
-
-  ngOnInit(): void {}
 
   getReservationTime(day: number, hour: number): void {
     let selectedDay = this.reservationList[day].day;

@@ -61,17 +61,17 @@ export class ReservationStepperComponent implements OnInit {
     });
   }
 
-  goToDateSelect() {
+  goToDateSelect(): void {
     if (this.itemValue.id != 0) this.stepper.next();
   }
 
-  goToTimeSelect() {
+  goToTimeSelect(): void {
     if (this.userReservation.item.id != 0) this.stepper.next();
   }
 
-  getReservationsOnThatDay() {
-    const start = convert(this.dateFormCtrl.value) + ' 07:00'; // 2021-11-28 07:00
-    const end = convert(this.dateFormCtrl.value) + ' 23:00'; // 2021-11-28 23:00
+  getReservationsOnThatDay(): void {
+    const start = convert(this.dateFormCtrl.value) + ' 07:00';
+    const end = convert(this.dateFormCtrl.value) + ' 23:00';
     this.reservationService
       .getReservationsFromDate(start, end, this.itemValue?.id)
       .subscribe((result: any) => {
@@ -86,8 +86,7 @@ export class ReservationStepperComponent implements OnInit {
   }
 }
 
-//MOVE TO HELPER
-export function convert(str: Date) {
+export function convert(str: Date): string {
   var date = new Date(str),
     mnth = ('0' + (date.getMonth() + 1)).slice(-2),
     day = ('0' + date.getDate()).slice(-2);

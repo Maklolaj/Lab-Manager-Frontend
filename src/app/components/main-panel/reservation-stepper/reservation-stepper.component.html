@@ -43,10 +43,6 @@
   <!--STEP 3-->
   <mat-step>
     <ng-template matStepLabel>Wybierz Czas</ng-template>
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Czas</mat-label>
-      <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
-    </mat-form-field> -->
     <app-time-grid
       (selectedTimes)="getTimesFromTimeGrid($event)"
       [reservationList]="this.reservationList"
