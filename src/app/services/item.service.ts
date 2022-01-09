@@ -33,7 +33,8 @@ export class ItemService {
       productionDate: item.productionDate,
       description: item.description,
     };
-    return this.httpClient.post(url, body, this.httpOptions);
+    debugger;
+    return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 
   modifyItem(item: IItemModel): Observable<any> {

@@ -40,7 +40,7 @@ export class ResourcesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: IItemModel) => {
       if (result) {
         alert(`Usunięto ${result.name}`);
-        // this.itemService.deleteItem(result)
+        this.itemService.deleteItem(result).subscribe();
       } else {
         alert(`Operacja nieudana`);
       }
@@ -56,7 +56,7 @@ export class ResourcesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: IItemModel) => {
       if (result) {
         alert(`Zmodyfikowano ${result.name}`);
-        //this.itemService.modifyItem(result)
+        this.itemService.modifyItem(result).subscribe();
       } else {
         alert(`Operacja nieudana`);
       }

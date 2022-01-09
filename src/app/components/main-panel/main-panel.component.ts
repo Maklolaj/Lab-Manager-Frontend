@@ -37,7 +37,6 @@ export class MainPanelComponent implements OnInit {
   logout() {
     this.store.dispatch(siginOut());
     this.router.navigate(['']);
-    //this.store.select(slectLoginStatus).subscribe((x)=>(console.log(x)))
   }
 
   showOption(option: string): void {
