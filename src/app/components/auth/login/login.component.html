@@ -8,8 +8,8 @@
   <div class="row-12">
     <div class="col d-flex justify-content-center login-input">
       <mat-form-field>
-        <mat-label>Login</mat-label>
-        <input matInput placeholder="Wpisz login" />
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Wpisz email" [formControl]="userEmail" />
       </mat-form-field>
     </div>
   </div>
@@ -18,7 +18,12 @@
     <div class="col d-flex justify-content-center pass-input">
       <mat-form-field>
         <mat-label>Hasło</mat-label>
-        <input matInput placeholder="Wpisz hasło" />
+        <input
+          type="password"
+          matInput
+          placeholder="Wpisz hasło"
+          [formControl]="userPass"
+        />
       </mat-form-field>
     </div>
   </div>
