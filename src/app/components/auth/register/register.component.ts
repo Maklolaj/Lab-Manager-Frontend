@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       ],
-      login: ['', Validators.required, Validators.minLength(6)],
+      login: ['', [Validators.required, Validators.minLength(6)]],
       passwordOne: ['', [Validators.required, Validators.minLength(6)]],
       passwordTwo: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -38,7 +38,15 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.validateForm() ? alert('registered successfully') : null; //this.authService.registerUser(this.f.email.value,this.f.passwordOne.value)
+    if (this.validateForm()) {
+      alert('registered successfully');
+      this.authService
+        .registerUser(this.f.email.value, this.f.passwordOne.value)
+        .subscribe((response) => {
+          console.log(response);
+        });
+      this.router.navigate(['login']);
+    }
   }
 
   validateForm(): boolean {
@@ -55,9 +63,11 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (!this.registerForm.valid) {
-      alert('Nieprawidłowe dane w formularzu');
+      alert('Nieprawidłowe dane w formularzu!');
       return false;
     }
     return true;
   }
+
+  handleSuccessfulRegistration(): void {}
 }
