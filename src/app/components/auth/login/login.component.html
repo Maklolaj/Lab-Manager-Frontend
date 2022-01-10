@@ -4,29 +4,39 @@
       <img src="../../../../assets/agh.jpg" />
     </div>
   </div>
-
-  <div class="row-12">
-    <div class="col d-flex justify-content-center login-input">
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Wpisz email" [formControl]="userEmail" />
-      </mat-form-field>
+  <form [formGroup]="loginForm">
+    <div class="row-12">
+      <div class="col d-flex justify-content-center login-input">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Wpisz email" formControlName="email" />
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">
+            Wymagany adres e-mail!
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('pattern')">
+            Niepoprawny adres e-mail!
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
 
-  <div class="row-12">
-    <div class="col d-flex justify-content-center pass-input">
-      <mat-form-field>
-        <mat-label>Hasło</mat-label>
-        <input
-          type="password"
-          matInput
-          placeholder="Wpisz hasło"
-          [formControl]="userPass"
-        />
-      </mat-form-field>
+    <div class="row-12">
+      <div class="col d-flex justify-content-center pass-input">
+        <mat-form-field>
+          <mat-label>Hasło</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Wpisz hasło"
+            formControlName="password"
+          />
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">
+            Wymagane hasło!
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
+  </form>
 
   <div class="row-12">
     <div class="col d-flex justify-content-center login-btn">

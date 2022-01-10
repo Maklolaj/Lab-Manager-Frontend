@@ -39,12 +39,17 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if (this.validateForm()) {
-      alert('registered successfully');
       this.authService
         .registerUser(this.f.email.value, this.f.passwordOne.value)
-        .subscribe((response) => {
-          console.log(response);
-        });
+        .subscribe(
+          (response) => {
+            console.log(response);
+            alert('registered successfully');
+          },
+          (error) => {
+            alert('Rejestracja nieudana');
+          }
+        );
       this.router.navigate(['login']);
     }
   }

@@ -1,5 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,18 +19,36 @@ export class LoginComponent implements OnInit {
   constructor(
     private store: Store<any>,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private formBuilder: FormBuilder
   ) {}
-  userEmail = new FormControl('');
-  userPass = new FormControl('');
 
-  ngOnInit(): void {}
+  loginForm: FormGroup;
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
+      ],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
+
+  get loginControls() {
+    return this.loginForm.controls;
+  }
 
   signIn(): void {
     this.store.dispatch(siginIn({ isAdmin: false }));
-
+    console.log(this.loginControls.email.value);
+    console.log(this.loginControls.password.value);
     this.authService
-      .signIn(this.userEmail.value, this.userPass.value)
+      .signIn(this.loginControls.email.value, this.loginControls.password.value)
       .subscribe(
         (jwt) => {
           localStorage.setItem('jwt', JSON.stringify(jwt));
@@ -43,6 +66,9 @@ export class LoginComponent implements OnInit {
         },
         (error) => {
           console.log(error);
+          this.loginControls.email.setValue('');
+          this.loginControls.password.setValue('');
+          alert('Logowanie nieudane');
         }
       );
   }
