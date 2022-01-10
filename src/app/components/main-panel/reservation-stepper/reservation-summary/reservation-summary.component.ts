@@ -17,7 +17,12 @@ export class ReservationSummaryComponent implements OnInit {
   @Input()
   itemList: IItemModel[] = [];
 
-  ngOnInit(): void {}
+  @Input()
+  parent: any;
+
+  ngOnInit(): void {
+    console.log(this.parent);
+  }
 
   formatSummaryDate(date: Date): string {
     return `${date?.getFullYear()}-${date?.getMonth()}-${date?.getDate()} ${date?.getHours()}:${date?.getMinutes()}0`; // UCINA 0 !!
@@ -34,12 +39,19 @@ export class ReservationSummaryComponent implements OnInit {
 
   confirmReservation(item: IItemModel, startDate: Date, endDate: Date) {
     if (item) {
-      alert(`Rezerwacja na zasób ${item.name} została stworzona`);
       this.reservationService
         .createReservation(item.id, startDate, endDate)
-        .subscribe((x) => {
-          console.log(x);
-        });
+        .subscribe(
+          (x) => {
+            console.log(x);
+            this.parent.stepper.reset();
+            alert(`Rezerwacja na zasób ${item.name} została stworzona`);
+          },
+          (error) => {
+            console.log(error);
+            alert(`Operacja nieudana`);
+          }
+        );
     } else {
       alert(`Operacja nieudana`);
     }

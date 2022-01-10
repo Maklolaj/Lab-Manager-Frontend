@@ -42,8 +42,16 @@ export class ReservationsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        alert('Zgłoszono usterke');
-        this.faultService.createFault(item.id, result).subscribe();
+        this.faultService.createFault(item.id, result).subscribe(
+          (result) => {
+            console.log(result);
+            alert('Zgłoszono usterke');
+          },
+          (error) => {
+            console.log(error);
+            alert(`Operacja nieudana`);
+          }
+        );
       } else {
         alert(`Operacja nieudana`);
       }

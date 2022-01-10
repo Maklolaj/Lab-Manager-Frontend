@@ -39,8 +39,16 @@ export class ResourcesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: IItemModel) => {
       if (result) {
-        alert(`Usunięto ${result.name}`);
-        this.itemService.deleteItem(result).subscribe();
+        this.itemService.deleteItem(result).subscribe(
+          (result) => {
+            console.log(result);
+            alert(`Usunięto ${result.name}`);
+          },
+          (error) => {
+            console.log(error);
+            alert(`Operacja nieudana`);
+          }
+        );
       } else {
         alert(`Operacja nieudana`);
       }
@@ -55,8 +63,16 @@ export class ResourcesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: IItemModel) => {
       if (result) {
-        alert(`Zmodyfikowano ${result.name}`);
-        this.itemService.modifyItem(result).subscribe();
+        this.itemService.modifyItem(result).subscribe(
+          (result) => {
+            console.log(result);
+            alert(`Zmodyfikowano ${result.name}`);
+          },
+          (error) => {
+            console.log(error);
+            alert(`Operacja nieudana`);
+          }
+        );
       } else {
         alert(`Operacja nieudana`);
       }
