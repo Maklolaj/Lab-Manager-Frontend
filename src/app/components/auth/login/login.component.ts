@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/services/auth.service';
 import { siginIn } from 'src/app/store/reducers/auth.reducers';
+import { JWTHelper } from 'src/app/utils/jwt-helper';
 
 @Component({
   selector: 'app-login',
@@ -20,12 +21,14 @@ export class LoginComponent implements OnInit {
     private store: Store<any>,
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private jwtHelper: JWTHelper
   ) {}
 
   loginForm: FormGroup;
 
   ngOnInit(): void {
+    console.log(this.jwtHelper.getExpDate());
     this.loginForm = this.formBuilder.group({
       email: [
         '',
