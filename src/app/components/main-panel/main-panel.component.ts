@@ -36,6 +36,7 @@ export class MainPanelComponent implements OnInit {
 
   logout() {
     this.store.dispatch(siginOut());
+    window.localStorage.removeItem('jwt');
     this.router.navigate(['']);
   }
 

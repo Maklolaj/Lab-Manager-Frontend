@@ -28,7 +28,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   ngOnInit(): void {
-    console.log(this.jwtHelper.getExpDate());
+    if (this.jwtHelper.getExpDate()) {
+      const tokenExpDate = new Date(+this.jwtHelper.getExpDate() * 1000);
+      this.tryToLoginAutomatically(tokenExpDate);
+    }
+
     this.loginForm = this.formBuilder.group({
       email: [
         '',
@@ -76,5 +80,18 @@ export class LoginComponent implements OnInit {
 
   register(): void {
     this.router.navigate(['register']);
+  }
+
+  tryToLoginAutomatically(tokenExpDate: Date): void {
+    if (tokenExpDate >= new Date()) {
+      this.router.navigate(['app-main-panel']);
+      let decodedJWT = atob(
+        JSON.parse(localStorage.getItem('jwt')!)['token'].split('.')[1]
+      );
+
+      this.store.dispatch(
+        siginIn({ isAdmin: JSON.parse(decodedJWT)['prn'] === '606' })
+      );
+    }
   }
 }
