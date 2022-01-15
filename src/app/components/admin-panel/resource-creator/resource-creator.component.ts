@@ -16,8 +16,15 @@ export class ResourceCreatorComponent implements OnInit {
 
   submitResourceCreation(): void {
     if (this.resource.name) {
-      alert(`Zasób ${this.resource.name} został dodany`);
-      this.itemServie.createItem(this.resource).subscribe();
+      this.itemServie.createItem(this.resource).subscribe(
+        (result) => {
+          alert(`Zasób ${this.resource.name} został dodany`);
+        },
+        (error) => {
+          console.log(error);
+          alert(`Operacja nieudana`);
+        }
+      );
     } else {
       alert(`Operacja nieudana`);
     }

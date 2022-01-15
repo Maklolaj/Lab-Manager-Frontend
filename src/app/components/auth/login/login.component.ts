@@ -48,8 +48,6 @@ export class LoginComponent implements OnInit {
 
   signIn(): void {
     this.store.dispatch(siginIn({ isAdmin: false }));
-    console.log(this.loginControls.email.value);
-    console.log(this.loginControls.password.value);
     this.authService
       .signIn(this.loginControls.email.value, this.loginControls.password.value)
       .subscribe(
