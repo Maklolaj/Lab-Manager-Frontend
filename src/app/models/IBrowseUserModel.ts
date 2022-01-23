@@ -3,3 +3,9 @@ export interface IBrowseUserModel {
   userEmail: string;
   userPhoneNumber: string;
 }
+
+export interface IUpdateUserModel {
+  userEmail: string;
+  userPassword: string;
+  userReTypedPassword: string;
+}
