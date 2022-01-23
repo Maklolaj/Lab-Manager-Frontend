@@ -10,11 +10,11 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  phoneNumber: number = 876125984;
-
   email: string = 'test@test.pl';
 
-  userName: string = 'User456';
+  passwordOne: string = '';
+
+  passwordTwo: string = '';
 
   changeUserData() {
     alert(`Dane zostały zmienione`);

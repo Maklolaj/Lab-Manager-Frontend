@@ -1,23 +1,21 @@
 <div class="user-profile-inputs">
   <h1 class="user-profile-title" mat-dialog-title>Twój profil</h1>
-  <mat-form-field
-    class="user-profile-name-form"
-    style="margin-right: 30px"
-    appearance="fill"
-  >
-    <mat-label>Nazwa użytkownika</mat-label>
-    <input matInput [(ngModel)]="this.userName" />
-  </mat-form-field>
 
   <mat-form-field class="user-profile-email-form" appearance="fill">
     <mat-label>Email</mat-label>
     <input matInput [(ngModel)]="this.email" />
   </mat-form-field>
 
-  <mat-form-field class="user-profile-phone-form" appearance="fill">
-    <mat-label>Numer telefonu</mat-label>
-    <input matInput [(ngModel)]="this.phoneNumber" />
+  <mat-form-field class="user-profile-password-form" appearance="fill">
+    <mat-label>Hasło</mat-label>
+    <input matInput [(ngModel)]="this.passwordOne" />
   </mat-form-field>
+
+  <mat-form-field class="user-profile-password-form" appearance="fill">
+    <mat-label>Powtórz hasło</mat-label>
+    <input matInput [(ngModel)]="this.passwordOne" />
+  </mat-form-field>
+
   <div class="user-profile-footer">
     <button mat-button (click)="changeUserData()">Zmień dane</button>
   </div>
