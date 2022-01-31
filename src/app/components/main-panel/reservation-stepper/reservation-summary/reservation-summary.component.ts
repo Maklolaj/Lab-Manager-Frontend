@@ -49,6 +49,7 @@ export class ReservationSummaryComponent implements OnInit {
           },
           (error) => {
             console.log(error);
+            this.parent.stepper.reset();
             alert(`Operacja nieudana`);
           }
         );
