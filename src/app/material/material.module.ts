@@ -26,6 +26,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const material = [
   MatButtonModule,
@@ -55,6 +56,7 @@ const material = [
   MatNativeDateModule,
   MatButtonToggleModule,
   MatFormFieldModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
