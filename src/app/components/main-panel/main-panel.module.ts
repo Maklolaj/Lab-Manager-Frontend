@@ -5,7 +5,10 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { MainPanelComponent } from './main-panel.component';
 import { AdminPanelModule } from '../admin-panel/admin-panel.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import {
+  EmailConfirmationDialog,
+  UserProfileComponent,
+} from './user-profile/user-profile.component';
 import {
   FaultDialog,
   ReservationsComponent,
@@ -24,6 +27,7 @@ import { ReservationSummaryComponent } from './reservation-stepper/reservation-s
     ReservationStepperComponent,
     TimeGridComponent,
     ReservationSummaryComponent,
+    EmailConfirmationDialog,
   ],
   imports: [
     CommonModule,

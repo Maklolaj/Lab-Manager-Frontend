@@ -1,40 +1,83 @@
 <div class="user-profile-inputs">
   <h1 class="user-profile-title" mat-dialog-title>Twój profil</h1>
+  <mat-accordion>
+    <!-- Zmiana hasła -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Zmień hasło </mat-panel-title>
+      </mat-expansion-panel-header>
 
-  <form [formGroup]="updateUserDataForm">
-    <mat-form-field class="user-profile-email-form" appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" />
-      <mat-error *ngIf="updateUserDataForm.get('email').hasError('required')">
-        Obecny adres e-mail jest wymagany pzry zmianie hasła!
-      </mat-error>
-      <mat-error *ngIf="updateUserDataForm.get('email').hasError('pattern')">
-        Niepoprawny format!
-      </mat-error>
-    </mat-form-field>
+      <form [formGroup]="updatePasswordDataForm">
+        <mat-form-field class="user-profile-email-form" appearance="fill">
+          <mat-label>Hasło</mat-label>
+          <input matInput formControlName="oldPassword" />
+          <mat-error
+            *ngIf="
+              updatePasswordDataForm.get('oldPassword').hasError('required')
+            "
+          >
+            Hasło jest zbyt krótkie
+          </mat-error>
+        </mat-form-field>
 
-    <mat-form-field class="user-profile-password-form" appearance="fill">
-      <mat-label>Hasło</mat-label>
-      <input matInput type="password" formControlName="passwordOne" />
-      <mat-error
-        *ngIf="updateUserDataForm.get('passwordOne').hasError('required')"
-      >
-        Podaj obecne lub nowe odpowiednio skomplikowane hasło!
-      </mat-error>
-    </mat-form-field>
+        <mat-form-field class="user-profile-password-form" appearance="fill">
+          <mat-label>Nowe hasło</mat-label>
+          <input matInput type="password" formControlName="newPasswordOne" />
+          <mat-error
+            *ngIf="
+              updatePasswordDataForm.get('newPasswordOne').hasError('required')
+            "
+          >
+            Hasło jest zbyt krótkie
+          </mat-error>
+        </mat-form-field>
 
-    <mat-form-field class="user-profile-password-form" appearance="fill">
-      <mat-label>Powtórz hasło</mat-label>
-      <input matInput type="password" formControlName="passwordTwo" />
-      <mat-error
-        *ngIf="updateUserDataForm.get('passwordTwo').hasError('required')"
-      >
-        Powtórz obecne lub nowe odpowiednio skomplikowane hasło!
-      </mat-error>
-    </mat-form-field>
+        <mat-form-field class="user-profile-password-form" appearance="fill">
+          <mat-label>Powtórz nowe hasło</mat-label>
+          <input matInput type="password" formControlName="newPasswordTwo" />
+          <mat-error
+            *ngIf="
+              updatePasswordDataForm.get('newPasswordTwo').hasError('required')
+            "
+          >
+            Hasło jest zbyt krótkie
+          </mat-error>
+        </mat-form-field>
 
-    <div class="user-profile-footer">
-      <button mat-button (click)="changeUserData()">Zmień dane</button>
-    </div>
-  </form>
+        <div class="user-profile-footer">
+          <button mat-button>Zmień dane</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+
+    <!-- Zmiana maila -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Zmień adres e-mail </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form [formGroup]="updateEmailDataForm">
+        <mat-form-field class="user-profile-email-form" appearance="fill">
+          <mat-label>Nowy adres e-mail</mat-label>
+          <input matInput formControlName="newEmail" />
+          <mat-error
+            *ngIf="updateEmailDataForm.get('newEmail').hasError('pattern')"
+          >
+            Niepoprawny format
+          </mat-error>
+          <mat-error
+            *ngIf="updateEmailDataForm.get('newEmail').hasError('required')"
+          >
+            Wymagany adres e-mail
+          </mat-error>
+        </mat-form-field>
+
+        <div class="user-profile-footer">
+          <button (click)="openEmailConfirmationDialog()" mat-button>
+            Zmień dane
+          </button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

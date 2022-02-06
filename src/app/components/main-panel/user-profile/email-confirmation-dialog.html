@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Potwierdź adres e-mail</h1>
+<div mat-dialog-content>
+  <p>Wprowadź kod, który wysłano na nowy adres e-mail</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Kod:</mat-label>
+    <input matInput [(ngModel)]="userVerificationCode" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Zamknij</button>
+  <button mat-button [mat-dialog-close]="userVerificationCode" cdkFocusInitial>
+    Wyślij kod
+  </button>
+</div>
