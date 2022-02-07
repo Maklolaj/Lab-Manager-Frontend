@@ -4,8 +4,14 @@ export interface IBrowseUserModel {
   userPhoneNumber: string;
 }
 
-export interface IUpdateUserModel {
+export interface IUpdateUserPasswordModel {
+  currentPassword: string;
+  newUserPassword: string;
+  newUserReTypedPassword: string;
+}
+
+export interface IUpdateUserEmailModel {
   userEmail: string;
   userPassword: string;
-  userReTypedPassword: string;
+  userCode: string;
 }

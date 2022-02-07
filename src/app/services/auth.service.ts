@@ -2,7 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { IBrowseUserModel, IUpdateUserModel } from '../models/IBrowseUserModel';
+import {
+  IBrowseUserModel,
+  IUpdateUserEmailModel,
+  IUpdateUserPasswordModel,
+} from '../models/IBrowseUserModel';
 
 @Injectable({
   providedIn: 'root',
@@ -48,13 +52,37 @@ export class AuthService {
     return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 
-  updateUserData(model: IUpdateUserModel): Observable<any> {
-    const url: string = `${this.baseUrl}/identity/user/`;
+  updateUserEmail(model: IUpdateUserEmailModel) {
+    const url: string = `${this.baseUrl}/identity/user/email/`;
 
     const body = JSON.stringify({
       email: model.userEmail,
       password: model.userPassword,
-      repeatedPassword: model.userReTypedPassword,
+      code: model.userCode,
+    });
+
+    return this.httpClient.put<any>(url, body, this.httpOptions);
+  }
+
+  confirmNewEmail(model: IUpdateUserEmailModel) {
+    const url: string = `${this.baseUrl}/identity/user/email/confirm/`;
+
+    const body = JSON.stringify({
+      email: model.userEmail,
+      password: model.userPassword,
+      code: model.userCode,
+    });
+
+    return this.httpClient.put<any>(url, body, this.httpOptions);
+  }
+
+  updateUserPassword(model: IUpdateUserPasswordModel) {
+    const url: string = `${this.baseUrl}/identity/user/password/`;
+
+    const body = JSON.stringify({
+      currentPassword: model.currentPassword,
+      newUserPassword: model.newUserPassword,
+      newUserReTypedPassword: model.newUserReTypedPassword,
     });
 
     return this.httpClient.put<any>(url, body, this.httpOptions);
