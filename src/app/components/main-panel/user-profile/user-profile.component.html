@@ -10,9 +10,10 @@
       <form [formGroup]="updatePasswordDataForm">
         <mat-form-field class="user-profile-email-form" appearance="fill">
           <mat-label>Hasło</mat-label>
-          <input matInput formControlName="oldPassword" />
+          <input matInput type="password" formControlName="oldPassword" />
           <mat-error
             *ngIf="
+              updatePasswordDataForm.get('oldPassword').hasError('minlength') ||
               updatePasswordDataForm.get('oldPassword').hasError('required')
             "
           >
@@ -22,9 +23,12 @@
 
         <mat-form-field class="user-profile-password-form" appearance="fill">
           <mat-label>Nowe hasło</mat-label>
-          <input matInput type="password" formControlName="newPasswordOne" />
+          <input matInput formControlName="newPasswordOne" />
           <mat-error
             *ngIf="
+              updatePasswordDataForm
+                .get('newPasswordOne')
+                .hasError('minlength') ||
               updatePasswordDataForm.get('newPasswordOne').hasError('required')
             "
           >
@@ -34,9 +38,12 @@
 
         <mat-form-field class="user-profile-password-form" appearance="fill">
           <mat-label>Powtórz nowe hasło</mat-label>
-          <input matInput type="password" formControlName="newPasswordTwo" />
+          <input matInput formControlName="newPasswordTwo" />
           <mat-error
             *ngIf="
+              updatePasswordDataForm
+                .get('newPasswordTwo')
+                .hasError('minlength') ||
               updatePasswordDataForm.get('newPasswordTwo').hasError('required')
             "
           >
@@ -45,7 +52,13 @@
         </mat-form-field>
 
         <div class="user-profile-footer">
-          <button mat-button>Zmień dane</button>
+          <button
+            (click)="changePassword()"
+            [disabled]="!isChangePasswordDisabled"
+            mat-button
+          >
+            Zmień dane
+          </button>
         </div>
       </form>
     </mat-expansion-panel>
@@ -72,8 +85,27 @@
           </mat-error>
         </mat-form-field>
 
+        <mat-form-field class="user-profile-email-form" appearance="fill">
+          <mat-label>Hasło</mat-label>
+          <input matInput type="password" formControlName="currentPassword" />
+          <mat-error
+            *ngIf="
+              updateEmailDataForm
+                .get('currentPassword')
+                .hasError('minlength') ||
+              updateEmailDataForm.get('currentPassword').hasError('required')
+            "
+          >
+            Hasło jest zbyt krótkie
+          </mat-error>
+        </mat-form-field>
+
         <div class="user-profile-footer">
-          <button (click)="openEmailConfirmationDialog()" mat-button>
+          <button
+            (click)="openEmailConfirmationDialog()"
+            [disabled]="!isChangeEmailDisabled"
+            mat-button
+          >
             Zmień dane
           </button>
         </div>
