@@ -16,6 +16,12 @@ export class AuthService {
 
   private baseUrl: string = environment.baseUrl;
 
+  private basicHttpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+    }),
+  };
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-type': 'application/json',
@@ -25,6 +31,13 @@ export class AuthService {
     }),
   };
 
+  getJWT() {
+    console.log(JSON.parse(localStorage.getItem('jwt')!));
+    JSON.parse(localStorage.getItem('jwt')) != null
+      ? JSON.parse(localStorage.getItem('jwt')!)['token']
+      : ' ';
+  }
+
   signIn(email: string, password: string): Observable<any> {
     const url: string = `${this.baseUrl}/identity/login/`;
 
@@ -33,11 +46,12 @@ export class AuthService {
       password: password,
     });
 
-    return this.httpClient.post<any>(url, body, this.httpOptions);
+    return this.httpClient.post<any>(url, body, this.basicHttpOptions);
   }
 
   getAllUsers(): Observable<any> {
     const url: string = `${this.baseUrl}/identity/users/`;
+
     return this.httpClient.get<IBrowseUserModel[]>(url, this.httpOptions);
   }
 
@@ -49,22 +63,22 @@ export class AuthService {
       password: password,
     });
 
-    return this.httpClient.post<any>(url, body, this.httpOptions);
+    return this.httpClient.post<any>(url, body, this.basicHttpOptions);
   }
 
-  updateUserEmail(model: IUpdateUserEmailModel) {
+  updateUserEmail(model: IUpdateUserEmailModel): Observable<any> {
     const url: string = `${this.baseUrl}/identity/user/email/`;
-
+    console.log(this.httpOptions.headers);
     const body = JSON.stringify({
       email: model.userEmail,
       password: model.userPassword,
       code: model.userCode,
     });
 
-    return this.httpClient.put<any>(url, body, this.httpOptions);
+    return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 
-  confirmNewEmail(model: IUpdateUserEmailModel) {
+  confirmNewEmail(model: IUpdateUserEmailModel): Observable<any> {
     const url: string = `${this.baseUrl}/identity/user/email/confirm/`;
 
     const body = JSON.stringify({
@@ -73,18 +87,18 @@ export class AuthService {
       code: model.userCode,
     });
 
-    return this.httpClient.put<any>(url, body, this.httpOptions);
+    return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 
-  updateUserPassword(model: IUpdateUserPasswordModel) {
+  updateUserPassword(model: IUpdateUserPasswordModel): Observable<any> {
     const url: string = `${this.baseUrl}/identity/user/password/`;
 
     const body = JSON.stringify({
       currentPassword: model.currentPassword,
-      newUserPassword: model.newUserPassword,
-      newUserReTypedPassword: model.newUserReTypedPassword,
+      password: model.newUserPassword,
+      repeatedPassword: model.newUserReTypedPassword,
     });
 
-    return this.httpClient.put<any>(url, body, this.httpOptions);
+    return this.httpClient.post<any>(url, body, this.httpOptions);
   }
 }
